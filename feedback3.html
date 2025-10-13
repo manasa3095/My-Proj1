@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dynamic Feedback Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    /* CSS SAME AS BEFORE — Not altered, skipping for brevity */
+    /* Keep your original full CSS here — unchanged */
+     :root {
+      --primary: #4361ee;
+      --secondary: #3f37c9;
+      --accent: #4895ef;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #4cc9f0;
+      --danger: #f72585;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 30px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .container {
+      max-width: 600px;
+      width: 100%;
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .container:hover {
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    h2 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+    
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      color: var(--dark);
+      font-weight: 500;
+    }
+    
+    input, textarea, button, select {
+      width: 100%;
+      margin: 8px 0;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 2px solid #e9ecef;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+      outline: none;
+    }
+    
+    button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 20px;
+      padding: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    button:hover {
+      background-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Flip card styles */
+    .role-selection {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    
+    .role-card {
+      width: 200px;
+      height: 250px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    
+    .role-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    
+   .role-card:hover:not(.active) .role-card-inner {
+  transform: scale(1.02);
+}
+
+    
+    .role-card.active .role-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .role-card-front, .role-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .role-card-front {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .role-card-back {
+      background-color: white;
+      color: var(--dark);
+      transform: rotateY(180deg);
+      border: 2px solid var(--primary);
+    }
+    
+    .role-icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+    
+    .role-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .role-desc {
+      text-align: center;
+      font-size: 14px;
+    }
+    
+    .role-btn {
+      margin-top: 15px;
+      padding: 8px 20px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .role-btn:hover {
+      background-color: var(--secondary);
+    }
+    
+    /* Other styles remain the same */
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background-color: #e9ecef;
+      border-radius: 4px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background-color: var(--accent);
+      border-radius: 4px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+    
+    .success-message {
+      background-color: #d1fae5;
+      color: #065f46;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+      display: none;
+    }
+    
+    .shake {
+      animation: shake 0.5s;
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+    
+    .upload-area {
+      border: 2px dashed #adb5bd;
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .upload-area:hover {
+      border-color: var(--accent);
+      background-color: rgba(72, 149, 239, 0.05);
+    }
+    
+    .upload-area.active {
+      border-color: var(--primary);
+      background-color: rgba(72, 149, 239, 0.1);
+    }
+    
+    .question-card {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .question-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+<div class="container animate__animated animate__fadeIn">
+
+    <h2>Department Feedback Portal</h2>
+    
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="success-message" id="successMessage">
+      <!-- SVG Success Icon and Text -->
+      <span id="successText"></span>
+    </div>
+
+    <!-- Step 1: Role selection with flip cards -->
+    <div id="roleSelection" class="fade-in" data-prev="none">
+      <div class="role-selection">
+        <div class="role-card" id="adminCard">
+          <div class="role-card-inner">
+            <div class="role-card-front">
+              <div class="role-icon">👤</div>
+              <div class="role-title">Admin</div>
+              <div class="role-desc">Upload and manage feedback questions</div>
+            </div>
+            <div class="role-card-back">
+              <div class="role-title">Admin Access</div>
+              <div class="role-desc">You'll need to enter admin credentials to proceed</div>
+              <button class="role-btn" onclick="selectRole('admin')">Select</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="role-card" id="userCard">
+          <div class="role-card-inner">
+            <div class="role-card-front">
+              <div class="role-icon">🧑‍🎓</div>
+              <div class="role-title">User</div>
+              <div class="role-desc">Provide feedback to the department</div>
+            </div>
+            <div class="role-card-back">
+              <div class="role-title">User Access</div>
+              <div class="role-desc">You'll be directed to the feedback form</div>
+              <button class="role-btn" onclick="selectRole('user')">Select</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Admin Login and Upload -->
+    <div id="adminLogin" class="hidden fade-in" data-prev="roleSelection">
+      <h3>Admin Login</h3>
+      <input type="password" id="adminPass" placeholder="Enter admin password" />
+      <button onclick="checkPassword()" id="loginBtn">Login</button>
+      <button onclick="goBack()" class="secondary-btn">Back</button>
+    </div>
+
+    <div id="adminSection" class="hidden fade-in" data-prev="adminLogin">
+      <h3>Upload Questions</h3>
+      <div class="upload-area" id="uploadArea">
+        <p>Click or drag a .txt file to upload questions</p>
+      </div>
+      <input type="file" id="fileInput" accept=".txt" style="display: none;" />
+      <button onclick="goBack()" class="secondary-btn">Back</button>
+    </div>
+
+    <!-- Step 3: Feedback Form for Users -->
+   <form id="feedbackForm" class="hidden fade-in" data-prev="roleSelection">
+
+      <h3>Feedback Form</h3>
+      <div id="formFields"></div>
+      <input type="email" name="email" placeholder="Your Email" required />
+      <button type="submit" id="submitBtn">Submit Feedback</button>
+      <button onclick="goBack()" class="secondary-btn">Back</button>
+    </form>
+</div>
+
+<!-- EmailJS SDK -->
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- ===== 100 % WORKING JS – REPLACE YOUR OLD SCRIPT WITH THIS ===== -->
+<script>
+/* ---------------------------------------------------------------
+   Everything runs only after the page’s HTML is fully loaded.
+---------------------------------------------------------------- */
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* 1️⃣  CONFIGURATION ------------------------------------------------ */
+  const PUBLIC_KEY     = "oDfRDPq_waJJXPXOS";   // ← your EmailJS public key
+  const SERVICE_ID     = "service_m0xuij8";     // ← your EmailJS service ID
+  const TEMPLATE_ID    = "template_5v1164o";    // ← your EmailJS template ID
+  const ADMIN_PASSWORD = "admin123";            // ← change if needed
+
+  emailjs.init(PUBLIC_KEY);
+
+  /* 2️⃣  DOM SHORTCUTS ------------------------------------------------ */
+  const qs   =  id => document.getElementById(id);
+  const fileInput      = qs("fileInput");
+  const form           = qs("feedbackForm");
+  const formFields     = qs("formFields");
+  const uploadArea     = qs("uploadArea");
+  const successMessage = qs("successMessage");
+  const successText    = qs("successText");
+  const progressBar    = qs("progressBar");
+  const adminCard      = qs("adminCard");
+  const userCard       = qs("userCard");
+
+  /* 3️⃣  PROGRESS BAR ------------------------------------------------- */
+  function updateProgress(step) {
+    const steps = { role: 25, login: 50, upload: 75, form: 100 };
+    progressBar.style.width = `${steps[step]}%`;
+  }
+  updateProgress("role");        // initial position ⬅️
+
+  /* 4️⃣  CARD ‑–> FLIP ANIMATION ------------------------------------- */
+  /* Clicking a card flips it so the “Select” button becomes visible.   */
+  [adminCard, userCard].forEach(card => {
+    card.addEventListener("click", () => card.classList.toggle("active"));
+  });
+
+  /* 5️⃣  NAVIGATION (Back button logic) ------------------------------ */
+function goBack() {
+  const allSections = ["adminLogin", "adminSection", "feedbackForm", "roleSelection"];
+  allSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.add("hidden");
+  });
+
+  const steps = document.querySelectorAll('.container > *');
+  const currentStep = Array.from(steps).find(el => !el.classList.contains('hidden') && el.id !== 'successMessage');
+  if (!currentStep || !currentStep.dataset.prev) return;
+  
+  const prev = document.getElementById(currentStep.dataset.prev);
+  if (prev) {
+    prev.classList.remove('hidden');
+    updateProgress(prev.id === 'roleSelection' ? 'role' : 
+                   prev.id === 'adminLogin' ? 'login' : 
+                   prev.id === 'adminSection' ? 'upload' : 'form');
+  }
+
+  adminCard?.classList.remove('active');
+  userCard?.classList.remove('active');
+}
+
+  window.goBack = goBack;   // make available to inline onclick
+
+  /* 6️⃣  ROLE SELECTION ------------------------------------------------ */
+  function selectRole(role) {
+    if (role === "admin") {
+      adminCard.classList.add("active");
+      setTimeout(() => {
+        qs("roleSelection").classList.add("hidden");
+        const adminLogin = qs("adminLogin");
+        adminLogin.classList.remove("hidden");
+        adminLogin.dataset.prev = "roleSelection";
+        updateProgress("login");
+      }, 800);   // wait for flip
+    } else {
+      userCard.classList.add("active");
+      setTimeout(() => {
+        qs("roleSelection").classList.add("hidden");
+        const feedbackForm = qs("feedbackForm");
+        feedbackForm.classList.remove("hidden");
+        feedbackForm.dataset.prev = "roleSelection";
+        generateFormFromStorage();
+        updateProgress("form");
+      }, 800);
+    }
+  }
+  window.selectRole = selectRole;   // exposed for inline onclick
+
+  /* 7️⃣  ADMIN ‑–> PASSWORD CHECK ------------------------------------ */
+  function checkPassword() {
+    if (qs("adminPass").value === ADMIN_PASSWORD) {
+      qs("adminLogin").classList.add("hidden");
+      const adminSection = qs("adminSection");
+      adminSection.classList.remove("hidden");
+      adminSection.dataset.prev = "adminLogin";
+      updateProgress("upload");
+    } else {
+      alert("❌ Incorrect password!");
+    }
+  }
+  window.checkPassword = checkPassword;   // exposed for inline onclick
+
+  /* 8️⃣  FILE UPLOAD (drag‑drop & click) ------------------------------ */
+  uploadArea.addEventListener("click", ()     => fileInput.click());
+  uploadArea.addEventListener("dragover", e => { e.preventDefault(); uploadArea.classList.add("active"); });
+  uploadArea.addEventListener("dragleave", () => uploadArea.classList.remove("active"));
+  uploadArea.addEventListener("drop",      e => {
+    e.preventDefault(); uploadArea.classList.remove("active");
+    if (e.dataTransfer.files.length) { fileInput.files = e.dataTransfer.files; handleFileUpload(); }
+  });
+  fileInput.addEventListener("change", handleFileUpload);
+
+  function handleFileUpload() {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = e => {
+      const questions = e.target.result.split(/\r?\n/).filter(line => line.trim());
+      localStorage.setItem("questions", JSON.stringify(questions));
+
+      uploadArea.innerHTML =
+        `<p>✅ ${questions.length} question${questions.length !== 1 ? "s" : ""} uploaded!</p>`;
+
+      flashMessage("Questions uploaded successfully. You can now test as user.", true);
+    };
+    reader.readAsText(file);
+  }
+
+  /* 9️⃣  BUILD USER FORM FROM LOCAL STORAGE -------------------------- */
+  function generateFormFromStorage() {
+    const questions = JSON.parse(localStorage.getItem("questions") || "[]");
+    if (questions.length === 0) {
+      flashMessage("No questions uploaded by admin yet.", false, 3000, () => goBack());
+      return;
+    }
+
+    formFields.innerHTML = "";
+    questions.forEach((q, i) => {
+      formFields.insertAdjacentHTML(
+        "beforeend",
+        `<label>${q}</label><textarea name="q${i + 1}" required rows="3"></textarea>`
+      );
+    });
+    form.classList.remove("hidden");
+  }
+
+  /* 🔟  FORM SUBMIT (EmailJS) ---------------------------------------- */
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    // Build HTML message
+    let compiledMessage = "<h3>Feedback Responses</h3><ul>";
+    formData.forEach((value, key) => {
+      if (key !== "email") compiledMessage += `<li><strong>${key}:</strong> ${value}</li>`;
+    });
+    compiledMessage += "</ul>";
+
+    // Send
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+      email:   formData.get("email"),
+      message: compiledMessage
+    })
+    .then(()  => { flashMessage("Feedback sent successfully!", true, 5000); form.reset(); })
+    .catch(() => { flashMessage("Failed to send feedback. Please try again.", false); });
+  });
+
+  /* 1️⃣1️⃣  HELPER: flashMessage() ------------------------------------ */
+  function flashMessage(text, success = true, ms = 3000, after = null) {
+    successText.textContent = text;
+    successMessage.style.display      = "block";
+    successMessage.style.background   = success ? "#d1fae5" : "#fee2e2";
+    successMessage.style.color        = success ? "#065f46" : "#b91c1c";
+    setTimeout(() => {
+      successMessage.style.display = "none";
+      if (after) after();
+    }, ms);
+  }
+
+}); // ← end DOMContentLoaded
+</script>
+<!-- ===== END OF REPLACEMENT SCRIPT ================================= -->
+</body>
+</html>

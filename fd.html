@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Faculty Development Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3498db;
+      --secondary: #2ecc71;
+      --accent: #e74c3c;
+      --dark: #2c3e50;
+      --light: #ecf0f1;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      color: var(--dark);
+    }
+
+    .container {
+      max-width: 100%;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 30px 0;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .stats-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: scroll 25s linear infinite;
+    }
+
+    .stats-container:hover .scroll-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .stat-card {
+      flex: 0 0 240px;
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--primary);
+    }
+
+    .stat-card:nth-child(2)::before { background: var(--secondary); }
+    .stat-card:nth-child(3)::before { background: var(--accent); }
+    .stat-card:nth-child(4)::before { background: #f39c12; }
+    .stat-card:nth-child(5)::before { background: #9b59b6; }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 15px 0;
+      color: var(--primary);
+    }
+
+    .stat-card:nth-child(2) .stat-value { color: var(--secondary); }
+    .stat-card:nth-child(3) .stat-value { color: var(--accent); }
+    .stat-card:nth-child(4) .stat-value { color: #f39c12; }
+    .stat-card:nth-child(5) .stat-value { color: #9b59b6; }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: #7f8c8d;
+    }
+
+    /* Hide scrollbar for all browsers */
+    .stats-container::-webkit-scrollbar {
+      display: none;
+    }
+    .stats-container {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @media (max-width: 768px) {
+      .scroll-track {
+        animation-duration: 15s;
+      }
+
+      .stat-card {
+        flex: 0 0 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Faculty Development Dashboard</h1>
+      <p>Key metrics for seminars, lectures, and workshops</p>
+    </header>
+
+    <div class="stats-container">
+      <div class="scroll-track">
+        <!-- First Set -->
+        <div class="stat-card">
+          <div class="stat-label">Seminars Organized</div>
+          <div class="stat-value" id="seminars-organized">42</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Seminars Conducted</div>
+          <div class="stat-value" id="seminars-conducted">36</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Lectures Delivered</div>
+          <div class="stat-value" id="lectures-delivered">128</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Workshops Organized</div>
+          <div class="stat-value" id="workshops-organized">18</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Workshops Conducted</div>
+          <div class="stat-value" id="workshops-conducted">15</div>
+        </div>
+
+        <!-- Duplicate Set -->
+        <div class="stat-card">
+          <div class="stat-label">Seminars Organized</div>
+          <div class="stat-value">42</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Seminars Conducted</div>
+          <div class="stat-value">36</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Lectures Delivered</div>
+          <div class="stat-value">128</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Workshops Organized</div>
+          <div class="stat-value">18</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Workshops Conducted</div>
+          <div class="stat-value">15</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CountUp.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.3.2/countUp.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const options = { duration: 3, separator: ',' };
+
+      new CountUp('seminars-organized', 42, options).start();
+      new CountUp('seminars-conducted', 36, options).start();
+      new CountUp('lectures-delivered', 128, options).start();
+      new CountUp('workshops-organized', 18, options).start();
+      new CountUp('workshops-conducted', 15, options).start();
+    });
+  </script>
+</body>
+</html>

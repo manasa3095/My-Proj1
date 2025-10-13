@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Production Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #4e2a84, #e96443);
+      color: #fff;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 60px;
+      color: #ffcc70;
+      text-shadow: 2px 2px 10px #000, 0 0 5px #ffae00;
+    }
+
+    .gallery-section {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .photo-block {
+      display: flex;
+      align-items: center;
+      margin-bottom: 60px;
+      gap: 40px;
+    }
+
+    .photo-block:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .photo-block img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(255, 203, 112, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-block img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+    }
+
+    .caption-box {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 25px 35px;
+      border-left: 5px solid #ffcc70;
+      border-radius: 14px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
+    }
+
+    .caption-box h3 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      color: #ffe299;
+      text-shadow: 0 0 4px #ffae00;
+    }
+
+    .caption-box p {
+      margin: 10px 0 0;
+      line-height: 1.7;
+      color: #fdfdfd;
+    }
+
+    .year {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffcc70;
+      border: 1px solid rgba(255, 204, 112, 0.4);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-shadow: 0 0 6px #ffae00;
+      backdrop-filter: blur(4px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      background: linear-gradient(45deg, #e96443, #904e95);
+      color: #ffe299;
+      font-size: 1rem;
+      margin-top: 80px;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 0 5px #000;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .photo-block {
+        flex-direction: column !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>📸 Production Gallery</h1>
+  <div class="gallery-section">
+
+    <div class="photo-block"><img src="s3.jpg" alt="Cricket Stadium">
+      <div class="caption-box">
+        <h3>Studio</h3>
+        <span class="year">1993</span>
+        <p>Editing studio at TTTI 3</p>
+      </div>
+    </div>
+
+    <div class="photo-block"><img src="Shooting for thanabana ap.jpg" alt="Thanabana">
+      <div class="caption-box">
+        <h3>Studio</h3>
+        <span class="year">1996</span>
+        <p>Shooting at Thanabana Andhra Pradesh</p>
+      </div>
+    </div>
+
+    <div class="photo-block"><img src="s10.jpg" alt="MFL Hazards">
+      <div class="caption-box">
+        <h3>🚧 MFL Hazards</h3>
+        <span class="year">1997</span>
+        <p>Industrial safety shoot at MFL premises</p>
+      </div>
+    </div>
+
+    <div class="photo-block"><img src="s14.jpg" alt="Eco Saviour">
+      <div class="caption-box">
+        <h3>🌱 Eco Saviour</h3>
+        <span class="year">1997</span>
+        <p>Environmental awareness project shoot</p>
+      </div>
+    </div>
+
+    <div class="photo-block"><img src="s7.jpg" alt="Concrete Lab">
+      <div class="caption-box">
+        <h3>🏗 Concrete Structure</h3>
+        <span class="year">1998</span>
+        <p>Shoot for prestressed concrete education module</p>
+      </div>
+    </div>
+
+     <div class="photo-block"><img src="Shooting for sanitation2.jpg" alt="Concrete Lab">
+      <div class="caption-box">
+        <h3>🏗 Shooting</h3>
+        <span class="year">1998</span>
+        <p>Shoot for sanitation</p>
+      </div>
+    </div>
+
+    <div class="photo-block"><img src="s5.jpg" alt="CLRI Campus">
+      <div class="caption-box">
+        <h3>🔬 CLRI Campus</h3>
+        <span class="year">1999</span>
+        <p>Filming project at Central Leather Research Institute</p>
+      </div>
+    </div>
+
+    <div class="photo-block"><img src="s9.jpg" alt="Zoning Atlas">
+      <div class="caption-box">
+        <h3>🗺 Zoning Atlas</h3>
+        <span class="year">1999</span>
+        <p>Environmental mapping project in Andhra Pradesh</p>
+      </div>
+    </div>
+
+    <div class="photo-block"><img src="s8.jpg" alt="Old Chennai">
+      <div class="caption-box">
+        <h3>⌐ Chennai</h3>
+        <span class="year">2000</span>
+        <p>Filming in Singara Chennai during early 2000s</p>
+      </div>
+    </div>
+
+    <div class="photo-block"><img src="Shooting for CP CB 1999.jpg" alt="Old Chennai">
+      <div class="caption-box">
+        <h3>⌐ CPCB</h3>
+        <span class="year">2000</span>
+        <p></p>
+      </div>
+    </div>
+
+
+    <div class="photo-block"><img src="s13.jpg" alt="SRM Vice Chancellor">
+      <div class="caption-box">
+        <h3>👨‍💼 SRM Leadership</h3>
+        <span class="year">2018</span>
+        <p>Shoot with SRM Vice Chancellor Muthamizchelvan</p>
+      </div>
+    </div>
+
+    <div class="photo-block"><img src="Shooting at VIT for biogas.jpg" alt="VIT">
+      <div class="caption-box">
+        <h3>🏫Bio gas</h3>
+        <span class="year">2021</span>
+        <p>Shooting at VIT for biogas</p>
+      </div>
+    </div>
+
+     <div class="photo-block"><img src="Shooting at vit with chancellor G Viswanathan.jpg" alt="VIT">
+      <div class="caption-box">
+        <h3>🏫VIT Chancellor</h3>
+        <span class="year">2021</span>
+        <p>Shooting at VIT Chancellor with chancellor G Viswanathan</p>
+      </div>
+    </div>
+
+
+    <div class="photo-block"><img src="s3.jpg" alt="Cricket Stadium">
+      <div class="caption-box">
+        <h3>⚡ Solar Project</h3>
+        <span class="year">2021</span>
+        <p>Shooting at Bangalore Stadium for solar panel visuals</p>
+      </div>
+    </div>
+
+    <div class="photo-block"><img src="s1.jpg" alt="SSN Studio">
+      <div class="caption-box">
+        <h3>🎬 SSN Studio</h3>
+        <span class="year">2022</span>
+        <p>Chroma shooting session at SSN campus</p>
+      </div>
+    </div>
+
+  </div>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1000 });</script>
+</body>
+</html>

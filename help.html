@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Help - NITTTR Queries</title>
+  <style>
+  body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px;
+  background: linear-gradient(to right, #e0f7fa, #f0f8ff);
+  color: #333;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 1px #ffffff;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+button {
+  padding: 14px 24px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: scale(1.02);
+}
+
+.answer {
+  margin-top: 35px;
+  padding: 25px;
+  background: #ffffff;
+  border-left: 6px solid #3498db;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #2c3e50;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
+</head>
+<body>
+
+  <h2>How can we help you?</h2>
+
+  <div class="button-group">
+    <button onclick="showAnswer('mission')">What is NITTTR's mission?</button>
+    <div id="mission"></div>
+    <button onclick="showAnswer('programs')">What programs are offered?</button>
+     <div id="mission"></div>
+    <button onclick="showAnswer('contact')">How to contact the department?</button>
+     <div id="mission"></div>
+    <button onclick="showAnswer('facilities')">What are the key facilities?</button>
+     <div id="mission"></div>
+  </div>
+
+  <div id="answerBox" class="answer" style="display: none;"></div>
+
+  <script>
+    function showAnswer(option) {
+      const answers = {
+        mission: "NITTTR's mission is to improve the quality of technical education through faculty development, research, curriculum design, and educational media.",
+        programs: "NITTTR Chennai offers M.Tech in AR/VR, Ph.D. programs, short-term training for faculty, and customized e-learning courses.",
+        contact: "You can contact the Department of Educational Media and Technology via email at demt@nitttrc.ac.in or visit us at Taramani, Chennai.",
+        facilities: "Facilities include XR Lab, e-Content Studio, Instructional Design Studio, Microteaching Lab, and AR/VR content development labs."
+      };
+
+      const box = document.getElementById('answerBox');
+      box.style.display = 'block';
+      box.textContent = answers[option];
+    }
+  </script>
+
+</body>
+</html>
+.....

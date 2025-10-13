@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Section</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .service-box1 {
+            background-color: lightsalmon;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .service-box2 {
+            background-color:violet;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .service-box3 {
+            background-color: rgb(139, 209, 232);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .service-box4 {
+            background-color: pink;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .service-box5 {
+            background-color: lightgreen;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .service-box6 {
+            background-color:lightsteelblue;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .service-box1:hover {
+            transform: translateY(-5px);
+        }
+         .service-box2:hover {
+            transform: translateY(-5px);
+        }
+         .service-box3:hover {
+            transform: translateY(-5px);
+        }
+         .service-box4:hover {
+            transform: translateY(-5px);
+        }
+         .service-box5:hover {
+            transform: translateY(-5px);
+        }
+         .service-box6:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f8ff;
+            border-radius: 50%;
+            color: #3498db;
+            font-size: 24px;
+        }
+        
+        .service-box6 h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .service-box1 h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .service-box2 h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .service-box3 h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .service-box4 h4 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .service-box5 h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .service-box1 p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .service-box2 p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .service-box3 p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .service-box4 p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .service-box5 p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .service-box6 p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .know-more-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .know-more-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .arrow-icon {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .know-more-btn:hover .arrow-icon {
+            transform: translateX(3px);
+        }
+        #ig1{
+          height:300px;
+          width:1200px;
+          margin-left:120px;
+        }
+    </style>
+</head>
+<body>
+  <img src="https://www.nitttrc.ac.in/nitttr/assets/img/new-logo.png" id="ig1">
+    <div class="container">
+        <div class="services-grid">
+            <div class="service-box1">
+               <center><div class="service-logo">👥</div>
+                <h3>About Us</h3>
+                <p>Empowering educators through media,technology, and innovation.We bridge the gap between pedagogy and digital learning</p>
+                <a href="#" class="know-more-btn">Know more <span class="arrow-icon">→</span></a>
+                </center> 
+            </div>
+            <div class="service-box2">
+                <center>
+                <div class="service-logo">🎓</div>
+                <h3>Faculty</h3>
+                <p>A dedicated team of experts driving excellence in instructional design and digital education. Passionate about research,training, and content innovation.</p>
+                <a href="#" class="know-more-btn">Know more <span class="arrow-icon">→</span></a>
+                </center>
+            </div>
+            
+           
+            <div class="service-box3">
+                <center>
+                <div class="service-logo">🔬</div>
+                <h3>Labs</h3>
+                <p>Advanced labs equipped for multimedia,e-content,and interactive learning design.Enabling hands-on creation of future-ready educational tools.</p>
+                <a href="#" class="know-more-btn">Know more <span class="arrow-icon">→</span></a>
+                </center>
+            </div>
+           
+            <div class="service-box4">
+                <center>
+                <div class="service-logo">🎥</div>
+                <h3>Recording Media</h3>
+                <p>Access our library of recorded lectures and media resources to supplement your learning experience.</p>
+                <a href="#" class="know-more-btn">Know more <span class="arrow-icon">→</span></a>
+                </center>
+            </div>
+            
+      
+            <div class="service-box5">
+                <center>
+                <div class="service-logo">📚</div>
+                <h3>Courses</h3>
+                <p>Browse our comprehensive course offerings designed to meet diverse educational needs and career goals.</p>
+                <a href="#" class="know-more-btn">Know more <span class="arrow-icon">→</span></a>
+                </center>
+            </div>
+            <div class="service-box6">
+                <center>
+                <div class="service-logo">🛟</div>
+                <h3>Support</h3>
+                <p>Get assistance with academic, technical, or administrative matters through our dedicated support team.</p>
+                <a href="#" class="know-more-btn">Know more <span class="arrow-icon">→</span></a>
+                </center>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

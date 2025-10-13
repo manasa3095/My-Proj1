@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dynamic Feedback Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 30px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea, button, select {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    h2, h3 {
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Department Feedback Portal</h2>
+
+    <!-- Step 1: Role selection -->
+    <div id="roleSelection">
+      <label for="role">Who are you?</label>
+      <select id="role">
+        <option value="" selected disabled>-- Select --</option>
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+      </select>
+      <button onclick="handleRole()">Continue</button>
+    </div>
+
+    <!-- Step 2: Admin Login and Upload -->
+    <div id="adminLogin" class="hidden">
+      <input type="password" id="adminPass" placeholder="Enter admin password" />
+      <button onclick="checkPassword()">Login</button>
+    </div>
+
+    <div id="adminSection" class="hidden">
+      <p><strong>Upload Feedback Questions (.txt):</strong></p>
+      <input type="file" id="fileInput" accept=".txt" />
+      <small>Each line becomes a question.</small>
+    </div>
+
+    <!-- Step 3: Feedback Form for Users -->
+    <form id="feedbackForm" class="hidden">
+      <div id="formFields"></div>
+      <input type="email" name="email" placeholder="Your Email" required />
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    const PUBLIC_KEY = "oDfRDPq_waJJXPXOS";          // Replace
+    const SERVICE_ID = "service_m0xuij8";          // Replace
+    const TEMPLATE_ID = "template_5v1164o";        // Replace
+    const ADMIN_PASSWORD = "admin123";
+
+    emailjs.init(PUBLIC_KEY);
+
+    const fileInput = document.getElementById("fileInput");
+    const form = document.getElementById("feedbackForm");
+    const formFields = document.getElementById("formFields");
+
+    function handleRole() {
+      const role = document.getElementById("role").value;
+      if (role === "admin") {
+        document.getElementById("roleSelection").classList.add("hidden");
+        document.getElementById("adminLogin").classList.remove("hidden");
+      } else if (role === "user") {
+        document.getElementById("roleSelection").classList.add("hidden");
+        generateFormFromStorage();
+      }
+    }
+
+    function checkPassword() {
+      const input = document.getElementById("adminPass").value;
+      if (input === ADMIN_PASSWORD) {
+        document.getElementById("adminLogin").classList.add("hidden");
+        document.getElementById("adminSection").classList.remove("hidden");
+      } else {
+        alert("❌ Incorrect password!");
+      }
+    }
+
+    // Admin uploading .txt file
+    fileInput.addEventListener("change", function () {
+      const file = this.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const questions = e.target.result.split('\n').filter(line => line.trim() !== "");
+        localStorage.setItem("questions", JSON.stringify(questions));
+        alert("✅ Questions uploaded successfully. You can now test as user.");
+      };
+      reader.readAsText(file);
+    });
+
+    // Generate form from localStorage
+    function generateFormFromStorage() {
+      const questions = JSON.parse(localStorage.getItem("questions") || "[]");
+      if (questions.length === 0) {
+        alert("⚠ No questions uploaded by admin yet.");
+        return;
+      }
+
+      formFields.innerHTML = "";
+      questions.forEach((q, i) => {
+        const label = document.createElement("label");
+        label.textContent = q;
+
+        const textarea = document.createElement("textarea");
+        textarea.name = `q${i + 1}`;
+        textarea.required = true;
+
+        formFields.appendChild(label);
+        formFields.appendChild(textarea);
+      });
+
+      form.classList.remove("hidden");
+    }
+
+    // EmailJS sending
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      let compiledMessage = "";
+
+      for (let [key, value] of formData.entries()) {
+        if (key !== "email") {
+         compiledMessage += `${key}: ${value}\n`;
+
+        }
+      }
+
+      const emailData = {
+        email: formData.get("email"),
+        message: compiledMessage
+      };
+
+      emailjs.send(SERVICE_ID, TEMPLATE_ID, emailData)
+        .then(() => {
+          alert("✅ Feedback sent successfully!");
+          form.reset();
+        })
+        .catch(error => {
+          alert("❌ Failed to send: " + JSON.stringify(error));
+        });
+    });
+  </script>
+</body>
+</html>

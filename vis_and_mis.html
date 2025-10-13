@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DEMT - Vision, Mission, Core Values</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f7faff;
+      color: #333;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      padding: 60px 20px;
+    }
+
+    .vision, .mission {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      background: white;
+      border-radius: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 40px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .text h2 {
+      font-size: 24px;
+      color: #ff5c00;
+      margin-bottom: 15px;
+    }
+
+    .text p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .image {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .image img {
+      max-width: 100%;
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Core Values Section */
+    .core-values {
+      background: #ffffff;
+      padding: 60px 20px;
+      border-radius: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    .core-values h2 {
+      font-size: 30px;
+      margin-bottom: 40px;
+      color: #0077b6;
+    }
+
+    .flower-layout {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      margin: 0 auto;
+    }
+
+    .center-heading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 140px;
+      height: 140px;
+      transform: translate(-50%, -50%);
+      background: #0077b6;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      padding: 15px;
+      z-index: 1;
+    }
+
+    .circle-card {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: var(--color);
+      border-radius: 50%;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+
+
+    .circle-card span {
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    .circle-card h3 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .circle-card p {
+      font-size: 11px;
+      line-height: 1.2;
+    }
+
+    /* Positioning around the center */
+    .card-1 { --color:#FF6B6B; top: 10%; left: 50%; transform: translate(-50%, -50%); }
+    .card-2 { --color:#FFD93D; top: 35%; left: 90%; transform: translate(-50%, -50%); }
+    .card-3 { --color:#6BCB77; top: 80%; left: 70%; transform: translate(-50%, -50%); }
+    .card-4 { --color:#4D96FF; top: 80%; left: 30%; transform: translate(-50%, -50%); }
+    .card-5 { --color:#9D4EDD; top: 35%; left: 10%; transform: translate(-50%, -50%); }
+
+    @media (max-width: 600px) {
+      .flower-layout {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .circle-card, .center-heading {
+        position: static;
+        width: 90%;
+        height: auto;
+        border-radius: 20px;
+        transform: none;
+        padding: 20px;
+      }
+
+      
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Vision -->
+  <section class="section vision" data-aos="fade-up">
+    <div class="text">
+      <h2>Our Vision</h2>
+      <p>
+        Towards Excellence in Promoting Need based Training Programs and Research in Learning Technologies and E-Content Development.
+      </p>
+    </div>
+    <div class="image">
+      <img src="c1.jpg" alt="Vision">
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section mission" data-aos="fade-right">
+    <div class="image">
+      <img src="286A3870.JPG" alt="Mission">
+    </div>
+    <div class="text">
+      <h2>Our Mission</h2>
+      <p>
+        To design and develop need-based training programs for Polytechnic & Engineering faculty and professionals.<br><br>
+        To offer international training through ITEC/SCAAP for global educators and professionals.<br><br>
+        To develop innovative programs in collaboration with Universities and Institutions.<br><br>
+        To support Government of India schemes in technical education.<br><br>
+        To provide research, testing, and consultancy services for industry and government.<br><br>
+        To partner with industries for skill-based and industrial training.<br><br>
+        To design instructional systems and multimedia content using modern technologies.
+      </p>
+    </div>
+  </section>
+
+  <!-- Core Values Flower Layout -->
+  <section class="section core-values" data-aos="zoom-in">
+    <h2>Our Core Values</h2>
+    <div class="flower-layout">
+      <div class="center-heading">Core<br>Values</div>
+
+      <div class="circle-card card-1">
+        <span>🔍</span>
+        <h3>Research</h3>
+        <p>Fostering inquiry and innovation through evidence-based practices.</p>
+      </div>
+
+      <div class="circle-card card-2">
+        <span>👍</span>
+        <h3>Empowerment</h3>
+        <p>Enabling individuals to reach their potential via training and support.</p>
+      </div>
+
+      <div class="circle-card card-3">
+        <span>💡</span>
+        <h3>Innovation</h3>
+        <p>Inspiring creativity through modern educational technologies.</p>
+      </div>
+
+      <div class="circle-card card-4">
+        <span>🎓</span>
+        <h3>Professional Growth</h3>
+        <p>Continuous development of educators and trainers.</p>
+      </div>
+
+      <div class="circle-card card-5">
+        <span>🤝</span>
+        <h3>Collaboration</h3>
+        <p>Building industry-academic partnerships to foster shared growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+  </script>
+</body>
+</html>

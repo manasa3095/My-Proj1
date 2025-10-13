@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>M.Tech. Augmented and Virtual Reality Admission</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      color: #333;
+    }
+    header {
+      background: #8e44ad;
+      color: #fff;
+      padding: 50px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #f1c40f;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .section {
+      margin-bottom: 50px;
+    }
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      flex: 1;
+      min-width: 250px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 40px 0;
+    }
+    .timeline div {
+      background: #3498db;
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 30px;
+    }
+    .timeline div:nth-child(2) { background: #2ecc71; }
+    .timeline div:nth-child(3) { background: #e67e22; }
+    .timeline div:nth-child(4) { background: #9b59b6; }
+
+    .career-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .career-item {
+      background: #fff;
+      border-left: 5px solid #3498db;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .career-item:hover {
+      transform: translateY(-5px);
+    }
+    footer {
+      background: #2c3e50;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    footer a {
+      color: #f1c40f;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .qr {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .qr img {
+      width: 150px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header data-aos="fade-down">
+    <h1>M.Tech. Augmented and Virtual Reality</h1>
+    <p class="highlight">Admissions Open 2025-2026</p>
+    <p>Last Date: <strong>30 May 2025</strong></p>
+  </header>
+
+  <div class="container">
+
+    <section class="section" data-aos="fade-up">
+      <div class="flex">
+        <div class="card">
+          <h3>Multiple Entry & Exit</h3>
+          <p>Flexibility to enter and exit the program at multiple points.</p>
+        </div>
+        <div class="card">
+          <h3>Fractal Mode</h3>
+          <p>Progress through phases with credit accumulation.</p>
+        </div>
+        <div class="card">
+          <h3>Trimester</h3>
+          <p>Sept-Dec, Jan-April, May-Aug</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+      <h2>Program Path</h2>
+      <div class="timeline">
+        <div>PG Certification<br>20 Credits</div>
+        <div>PG Diploma<br>40 Credits</div>
+        <div>PG Degree<br>60 Credits</div>
+        <div>Project</div>
+      </div>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+      <h2>Eligibility Criteria</h2>
+      <p>B.E. / B.Tech. in any Engineering or M.Sc. in Mathematics / Statistics / Computer Applications / Visual Communication or related fields / MCA</p>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+      <h2>Top Career Opportunities</h2>
+      <div class="career-grid">
+        <div class="career-item">Metaverse Developer</div>
+        <div class="career-item">Flight Simulator Engineer</div>
+        <div class="career-item">XR UI/UX Designer</div>
+        <div class="career-item">Startups & Entrepreneurship</div>
+        <div class="career-item">Industrial AR/VR Engineer</div>
+        <div class="career-item">3D Artist & Animator</div>
+        <div class="career-item">AR/VR Content Creator</div>
+        <div class="career-item">Academia & Research</div>
+      </div>
+    </section>
+
+    <section class="section qr" data-aos="fade-up">
+      <h2>Scan to Know More</h2>
+      <img src="qr.jpg" alt="QR Code">
+      <p><a href="https://www.nitttrc.ac.in/admission/mtechavpr" target="_blank">Explore Program Details</a></p>
+    </section>
+
+  </div>
+
+ 
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+  </script>
+</body>
+</html>

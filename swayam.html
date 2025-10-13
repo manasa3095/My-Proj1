@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWAYAM Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .swayam-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #f5f5dc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #e0e0e0;
+        }
+        
+        .options-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .option-btn {
+            position: relative;
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .option-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .option-btn:hover::before {
+            left: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .swayam-title {
+                font-size: 3rem;
+            }
+            
+            .options-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .option-btn {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="swayam-title">SWAYAM</h1>
+        <p class="subtitle">Study Webs of Active Learning for Young Aspiring Minds</p>
+    </div>
+    
+    <div class="options-container">
+        <div class="option-btn" onclick="window.location.href='developed.html'">
+            Developed
+        </div>
+        <div class="option-btn" onclick="window.location.href='rerun.html'">
+            Rerun
+        </div>
+    </div>
+    
+    <script>
+        // Add any JavaScript functionality here if needed
+        document.querySelectorAll('.option-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Animation on click
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-5px)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

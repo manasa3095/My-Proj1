@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <h1>Enter Name :</h1>
+    <input type="text" id="i1">
+  </div>
+  <div>
+    <h1>Enter Age :</h1>
+    <input type="text" id="i2">
+  </div>
+  <div>
+    <h1>Enter Place :</h1>
+    <input type="text" id="i3">
+  </div>
+  <div>
+    <h1>Enter Name :</h1>
+    <input type="button" value="submit" id="i1">
+  </div>
+  <script>
+    let a=document.querySelectorAll("input");
+    a.forEach((boxes,idx)=>{
+           boxes.addEventListener("keydown",(e)=>{
+                 if(e.key==="ArrowDown"){
+                   if(idx<a.length-1){
+                    a[idx+1].focus();
+                   }
+                 }
+                 else if(e.key==="ArrowUp"){
+                   
+                   if(idx>0){
+                    a[idx-1].focus();
+                   }
+                 }
+           });
+    })
+  </script>
+</body>
+</html>

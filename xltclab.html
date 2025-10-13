@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>XLTC Lab – Tilted Image Slider</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: burlywood;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 0;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    header h2 {
+      font-size: 2.5rem;
+      color: #00d4ff;
+      margin-top: 10px;
+    }
+
+    .slider {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      overflow: hidden;
+      border-radius: 8px;
+      margin-bottom: 60px;
+    }
+
+    .slide-track {
+      display: flex;
+      width: calc(300px * 58 * 2);
+      animation: scroll 80s linear infinite;
+    }
+
+    .slide {
+      width: 300px;
+      flex-shrink: 0;
+      padding: 5px;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+      transform: rotate(-5deg);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .slide:hover img {
+      transform: scale(1.1) rotate(0deg);
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+      z-index: 10;
+    }
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-300px * 58)); }
+    }
+
+    .slider:hover .slide-track {
+      animation-play-state: paused;
+    }
+
+    /* Equipment Section */
+    .equipment-section {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 40px auto;
+      flex-wrap: wrap;
+    }
+
+    .flip-card {
+      background: transparent;
+      width: 600px;
+      height: 400px;
+      perspective: 1000px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      border: 2px solid whitesmoke;
+      overflow: hidden;
+    }
+
+    .flip-card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .flip-card-back {
+      background-color: #1f1f1f;
+      color: white;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .spec-table th, .spec-table td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #444;
+    }
+
+    .spec-table th {
+      color: #00d4ff;
+      width: 40%;
+    }
+
+    /* Responsive */
+    @media(max-width: 600px) {
+      .slide {
+        width: 120px;
+      }
+
+      .slide img {
+        height: 100px;
+        transform: rotate(-5deg);
+      }
+
+      .slide-track {
+        width: calc(120px * 58 * 2);
+        animation: scroll 100s linear infinite;
+      }
+
+      @keyframes scroll {
+        to { transform: translateX(calc(-120px * 58)); }
+      }
+
+      .flip-card {
+        width: 90%;
+        height: 250px;
+      }
+      .flip-card-back {
+        padding: 15px;
+        text-align: left;
+        overflow-y: auto;
+      }
+
+      .flip-card-back h3 {
+        margin-bottom: 15px;
+        color: #00d4ff;
+      }
+
+      .flip-card-back p {
+        margin: 8px 0;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Department of Educational Media and Technology</h1>
+    <h2>XLTC Lab</h2>
+  </header>
+
+  <div class="slider">
+    <div class="slide-track">
+      <!-- JS will fill these -->
+    </div>
+  </div>
+
+  <h1 style="text-align:center; margin-top: 40px;">XLTC LAB EQUIPMENT</h1>
+  <div class="equipment-section">
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="1.JPG" alt="Equipment 1">
+        </div>
+        <div class="flip-card-back">
+          <h3>Oculus Quest 2</h3>
+          <table class="spec-table">
+            <tr>
+              <th>Specifications:</th>
+              <td>Fast-switch LCD, 1832×1920 per eye, Qualcomm Snapdragon XR2, 6GB RAM, 128GB/256GB storage</td>
+            </tr>
+            <tr>
+              <th>Quantity:</th>
+              <td>5 units</td>
+            </tr>
+            <tr>
+              <th>Year of Purchase:</th>
+              <td>2022</td>
+            </tr>
+            <tr>
+              <th>Cost:</th>
+              <td>46,000 per unit</td>
+            </tr>
+            <tr><th>Purpose:</th><td></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="6. Insta360 Pro 2 - 360 VR Camera .JPG" alt="Equipment 3">
+        </div>
+        <div class="flip-card-back">
+          <h3>Insta360 Pro 2</h3>
+          <table class="spec-table">
+            <tr>
+              <th>Specifications:</th>
+              <td>8K 3D @ 30fps, 6x 200° FOV fisheye lenses, FlowState stabilization, 4K 3D 360° live streaming</td>
+            </tr>
+            <tr>
+              <th>Quantity:</th>
+              <td>1 unit</td>
+            </tr>
+            <tr>
+              <th>Year of Purchase:</th>
+              <td>2022</td>
+            </tr>
+            <tr>
+              <th>Cost:</th>
+              <td>6,69,355per unit</td>
+            </tr>
+            <tr><th>Purpose:</th><td></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="3. Microsoft HoloLens .JPG" alt="Equipment 4">
+        </div>
+        <div class="flip-card-back">
+          <h3>Microsoft HoloLens 2</h3>
+          <table class="spec-table">
+            <tr>
+              <th>Specifications:</th>
+              <td>See-through holographic lenses (2K resolution per eye), Qualcomm Snapdragon 850, 4GB RAM, 64GB storage</td>
+            </tr>
+            <tr>
+              <th>Quantity:</th>
+              <td>1 unit</td>
+            </tr>
+            <tr>
+              <th>Year of Purchase:</th>
+              <td>2022</td>
+            </tr>
+            <tr>
+              <th>Cost:</th>
+              <td>2,91,500 per unit</td>
+            </tr>
+            <tr><th>Purpose:</th><td></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="xltceq4.jpg" alt="Equipment 4">
+        </div>
+        <div class="flip-card-back">
+          <h3>HTC Vive</h3>
+          <table class="spec-table">
+            <tr>
+              <th>Specifications:</th>
+              <td>Dual AMOLED 3.6" (1080×1200 per eye), 90Hz refresh rate, SteamVR Lighthouse tracking</td>
+            </tr>
+            <tr>
+              <th>Quantity:</th>
+              <td>4 units</td>
+            </tr>
+            <tr>
+              <th>Year of Purchase:</th>
+              <td>2019</td>
+            </tr>
+            <tr>
+              <th>Cost:</th>
+              <td>$599 per unit</td>
+            </tr>
+            <tr><th>Purpose:</th><td></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="xltceq5.jpg" alt="Equipment 5">
+        </div>
+        <div class="flip-card-back">
+          <h3>HP Reverb G2</h3>
+          <table class="spec-table">
+            <tr>
+              <th>Specifications:</th>
+              <td>LCD 2160×2160 per eye, 90Hz refresh rate, 114° FOV, Inside-out tracking (4 cameras)</td>
+            </tr>
+            <tr>
+              <th>Quantity:</th>
+              <td>4 units</td>
+            </tr>
+            <tr>
+              <th>Year of Purchase:</th>
+              <td>2022</td>
+            </tr>
+            <tr>
+              <th>Cost:</th>
+              <td>2,49,371 per unit</td>
+            </tr>
+            <tr><th>Purpose:</th><td></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="xltceq6.jpg" alt="Equipment 6">
+        </div>
+        <div class="flip-card-back">
+          <h3>Electro Lab Work</h3>
+          <table class="spec-table">
+            <tr>
+              <th>Specifications:</th>
+              <td>LCD 2160×2160 per eye, 90Hz refresh rate, 114° FOV, Inside-out tracking (4 cameras)</td>
+            </tr>
+            <tr>
+              <th>Quantity:</th>
+              <td>1 unit</td>
+            </tr>
+            <tr>
+              <th>Year of Purchase:</th>
+              <td>2024</td>
+            </tr>
+            <tr>
+              <th>Cost:</th>
+              <td>3,60,000 per unit</td>
+            </tr>
+            <tr><th>Purpose:</th><td></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="xltceq7.jpg" alt="Equipment 7">
+        </div>
+        <div class="flip-card-back">
+          <h3>Haloware(PC)</h3>
+          <table class="spec-table">
+            <tr>
+              <th>Specifications:</th>
+              <td>LCD 2160×2160 per eye, 90Hz refresh rate, 114° FOV, Inside-out tracking (4 cameras)</td>
+            </tr>
+            <tr>
+              <th>Quantity:</th>
+              <td>3 units</td>
+            </tr>
+            <tr>
+              <th>Year of Purchase:</th>
+              <td>2024</td>
+            </tr>
+            <tr>
+              <th>Cost:</th>
+              <td>3,60,000 per unit</td>
+            </tr>
+            <tr><th>Purpose:</th><td></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <script>
+    const images = [
+     "286A0466.jpg", "286A0458.jpg",
+      "286A0716.jpg", "286A0718.jpg", "286A1950.jpg", "286A1952.jpg", 
+      "286A2524.jpg", "286A2528.jpg", "286A3825.jpg", "286A3839.jpg",
+      "286A3849.jpg", "286A3855.jpg", "286A3859.jpg", "286A3870.jpg", "286A3884.jpg",
+      "286A3897.jpg", "286A3901.jpg", "286A3918.jpg", "286A3933.jpg", "286A3935.jpg",
+      "286A3946.jpg", "286A3947.jpg", "286A3952.jpg", "286A3972.jpg", "286A3982.jpg",
+      "286A3990.jpg", "286A3998.jpg", "286A4034.jpg", "286A9100.jpg",
+      "286A9102.jpg", "286A3996.jpg", "286A4037.jpg", "286A4154.jpg", "286A4323.jpg",
+      "286A4335.jpg", "286A5909.jpg", "286A5912.jpg", "286A5924.jpg",
+    "286A9142.jpg"
+    ];
+
+    const track = document.querySelector('.slide-track');
+    images.concat(images).forEach(src => {
+      const div = document.createElement('div');
+      div.className = 'slide';
+      div.innerHTML = `<img src="${src}" alt="">`;
+      track.appendChild(div);
+    });
+  </script>
+</body>
+</html>

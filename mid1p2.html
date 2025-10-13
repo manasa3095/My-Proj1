@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <center>
+    <div>
+      <h1>Enter Your Name</h1>
+      <input type="text" placeholder="Enter Name">
+    </div>
+    <div>
+      <button id="b1">Click</button>
+    </div>
+    <div id="txt"></div>
+
+  </center>
+  <script>
+    let a=document.getElementById("b1");
+    let b=document.querySelector("input");
+    let c=document.getElementById("txt");
+    document.addEventListener("click",(e)=>{
+      txt.innerHTML=`<h2>You Clicked ${e.target.tagName}</h2>`;
+    });
+    document.addEventListener("keydown",(e)=>{
+         txt.innerHTML=`<h3>You Clicked ${e.key} button in your keyboard</h3>`;
+    });
+    document.addEventListener("mouseover",(e)=>{
+      txt.innerHTML=`<h2>You hovered over ${e.target.tagName}</h2>`;
+    });
+    document.addEventListener("keyup",(e)=>{
+      txt.innerHTML=`<h3>You completed clicking ${e.key} button in your keyboard</h3>`;
+    });
+    a.onclick=()=>{
+      alert(`You entered ${b.value} in input box `);
+    }
+  </script>
+</body>
+</html>

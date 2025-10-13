@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="a"></h1>
+  <script>
+  function a(){
+   let d=new Date();
+   let h=d.getHours().toString().padStart(2,0);
+   
+   let m=d.getMinutes().toString().padStart(2,0);
+   let s=d.getSeconds().toString().padStart(2,0);
+   document.getElementById("a").textContent=`${h}:${m}:${s}`;}
+   a();
+   setInterval(a,1000);
+  </script>
+</body>
+</html>

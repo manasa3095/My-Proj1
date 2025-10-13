@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Request a Quote</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0f0f0f, #050505);
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 40px 20px;
+    }
+
+    .quote-section {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .quote-section h2 {
+      font-size: 3em;
+      margin-bottom: 40px;
+      color: #00ffe7;
+      text-shadow: 0 0 15px #00ffe7;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 15px #00ffe7; }
+      50% { text-shadow: 0 0 25px #00ffe7; }
+    }
+
+    .quote-options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .quote-card {
+      padding: 30px 25px;
+      background: rgba(0, 255, 255, 0.05);
+      color: #00ffc8;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0,255,255,0.1);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      width: 400px;
+      height:500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+      transition: 0.5s;
+    }
+
+    .quote-card:hover::before {
+      left: 100%;
+    }
+
+    .quote-card:hover {
+      background: rgba(0, 255, 255, 0.1);
+      transform: translateY(-6px);
+      box-shadow: 0 0 40px rgba(0,255,255,0.3);
+      color: #00ffe7;
+      text-shadow: 0 0 5px #00ffe7;
+    }
+
+    .quote-card span {
+      font-size: 30px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 5px #00ffe7);
+    }
+
+    @media (max-width: 600px) {
+      .quote-card {
+        font-size: 18px;
+        padding: 20px;
+        width: 90%;
+      }
+
+      .quote-section h2 {
+        font-size: 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="quote-section">
+    <h2>Request a Quote</h2>
+    <div class="quote-options">
+      <a href="ec.html" class="quote-card">
+        <span>📄</span> Quote for e-Content Development
+      </a>
+      <a href="arvrcc.html" class="quote-card">
+        <span>🕶️</span> Quote for AR/VR Content Creation
+      </a>
+    </div>
+  </div>
+
+  <!-- Optional JS to scroll to top when clicked -->
+  <script>
+    document.querySelectorAll('.quote-card').forEach(card => {
+      card.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

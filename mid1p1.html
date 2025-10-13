@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <h1>Enter Number</h1>
+    <input type="text" placeholder="Enter Number">
+    <div id="b"></div>
+    <button id="but">Enter</button>
+    <div id="b1"></div>
+    <script>
+      let a=document.querySelector("input");
+      let b=document.getElementById("but");
+      let c=document.getElementById("b");
+      let c2=document.getElementById("b1");
+     /* b.onclick=()=>{
+        try{
+          let v=check(a.value);
+        }
+        catch(err){
+              alert(err.message);
+              console.log("Error Log Details : "+err);
+        }
+      }
+      function check(v){
+             if(isNaN(v)){
+                 throw new Error("The Entered value is not a number😑");
+             }
+             c.innerHTML=`The value Entered is : ${v}`;
+      }*/
+     b.onclick=()=>{
+      try{
+        if(a.value.trim()===""){
+          throw new Error("*Required");
+        }
+        else{
+             c.style.visibility="hidden";
+             c2.innerHTML=`The value Entered is : ${a.value}`;
+        }
+      }
+      catch(err){
+            c.innerHTML=`<h5 style="color:red;margin:0px">${err.message}</h5>`;
+      }
+     }
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ITEC Participation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3.5rem;
+      margin-bottom: 70px;
+      color: #00fff7;
+      text-shadow: 0 0 15px #00fff7, 0 0 25px #1bd4ff;
+    }
+
+    .gallery-section {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .photo-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+
+    .photo-block:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .photo-block img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 255, 255, 0.35);
+      border: 2px solid rgba(0, 255, 255, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-block img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.7);
+    }
+
+    .caption-box {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px 40px;
+      border-left: 6px solid #00fff7;
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .caption-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    }
+
+    .caption-box h3 {
+      font-size: 1.8rem;
+      color: #b3faff;
+      margin-bottom: 12px;
+      text-shadow: 0 0 5px #00fff7;
+    }
+
+    .caption-box p {
+      font-size: 1.1rem;
+      color: #e0f7fa;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .photo-block {
+        flex-direction: column !important;
+        text-align: center;
+      }
+
+      .caption-box {
+        border-left: none;
+        border-top: 6px solid #00fff7;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌍 ITEC Participation Highlights</h1>
+
+  <div class="gallery-section">
+
+    <div class="photo-block" data-aos="fade-up">
+      <img src="p1.jpg" alt="ITEC Group">
+      <div class="caption-box">
+        <h3>2010 - 🌐 Studio Visit</h3>
+        <p>OTC studio group visit under ITEC program</p>
+      </div>
+    </div>
+
+    <div class="photo-block" data-aos="fade-up">
+      <img src="p2.jpg" alt="Lab Tour">
+      <div class="caption-box">
+        <h3>2010 - 🔬 Film Institute, Tharamani</h3>
+        <p>OTC visit to Film Institute, Tharamani (Chennai)</p>
+      </div>
+    </div>
+
+    <div class="photo-block" data-aos="fade-up">
+      <img src="p3.jpg" alt="Demo Session">
+      <div class="caption-box">
+        <h3>2010 - 🎭 Fine Arts College Visit</h3>
+        <p>Demonstration session at Fine Arts College, Chennai</p>
+      </div>
+    </div>
+
+    <div class="photo-block" data-aos="fade-up">
+      <img src="p4.jpg" alt="Group Activity">
+      <div class="caption-box">
+        <h3>2010 - 📺 Puducherry Doordarshan</h3>
+        <p>Visit to Doordarshan Studio in Puducherry</p>
+      </div>
+    </div>
+
+    <div class="photo-block" data-aos="fade-up">
+      <img src="p5.jpg" alt="Hands-on Workshop">
+      <div class="caption-box">
+        <h3>2010 - 🛠 Practical Workshop</h3>
+        <p>Hands-on training session at Tharamani Film Institute</p>
+      </div>
+    </div>
+
+    <div class="photo-block" data-aos="fade-up">
+      <img src="p6.jpg" alt="Certificate Ceremony">
+      <div class="caption-box">
+        <h3>2010 - 📜 AVM Studio Visit</h3>
+        <p>Studio tour and certificate ceremony at AVM</p>
+      </div>
+    </div>
+
+    <div class="photo-block" data-aos="fade-up">
+      <img src="p7.jpg" alt="Film Institute Visit">
+      <div class="caption-box">
+        <h3>2010 - 🎬 Film Institute Visit</h3>
+        <p>OTC visit to film institute, Chennai</p>
+      </div>
+    </div>
+
+  </div>
+
+  
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+  </script>
+
+</body>
+</html>

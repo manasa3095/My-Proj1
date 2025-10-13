@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DEMT - Vision, Mission, Core Values</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f7faff;
+      color: #333;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      padding: 60px 20px;
+    }
+
+    .vision, .mission {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      background: white;
+      border-radius: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 40px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .text h2 {
+      font-size: 24px;
+      color: #ff5c00;
+      margin-bottom: 15px;
+    }
+
+    .text p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .image {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .image img {
+      max-width: 100%;
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #ff5c00;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background-color: #e04d00;
+    }
+
+    /* Core Values */
+    .core-values {
+      background: #ffffff;
+      padding: 60px 20px;
+      border-radius: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    .core-values h2 {
+      font-size: 30px;
+      margin-bottom: 40px;
+      color: #0077b6;
+    }
+
+    .values-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: 600px;
+      margin: 0 auto;
+    }
+
+    .center-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 180px;
+      height: 180px;
+      background-color: #0077b6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    .value-item {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background-color: #e8f4fc;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+
+    .value-item:hover {
+      transform: scale(1.05);
+      background-color: #c4e0f7;
+    }
+
+    .value-item h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #023e8a;
+    }
+
+    .value-item p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .vision, .mission {
+        flex-direction: column;
+        padding: 20px;
+      }
+      
+      .values-container {
+        height: 500px;
+      }
+      
+      .center-circle, .value-item {
+        width: 140px;
+        height: 140px;
+      }
+      
+      .value-item h3 {
+        font-size: 16px;
+      }
+      
+      .value-item p {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .values-container {
+        height: 400px;
+      }
+      
+      .center-circle, .value-item {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .value-item h3 {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      
+      .value-item p {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Vision -->
+  <section class="section vision" data-aos="fade-up">
+    <div class="text">
+      <h2>Our Vision</h2>
+      <p>
+        Towards Excellence in Promoting Need based Training Programs and Research in Learning Technologies and E-Content Development.
+      </p>
+    </div>
+    <div class="image">
+      <img src="c1.jpg" alt="Vision">
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section mission" data-aos="fade-right">
+    <div class="image">
+      <img src="286A3870.JPG" alt="Mission">
+    </div>
+    <div class="text">
+      <h2>Our Mission</h2>
+      <p>
+        To design and develop need-based training programs for Polytechnic & Engineering faculty and professionals.<br><br>
+        To offer international training through ITEC/SCAAP for global educators and professionals.<br><br>
+        To develop innovative programs in collaboration with Universities and Institutions.<br><br>
+        To support Government of India schemes in technical education.<br><br>
+        To provide research, testing, and consultancy services for industry and government.<br><br>
+        To partner with industries for skill-based and industrial training.<br><br>
+        To design instructional systems and multimedia content using modern technologies.
+      </p>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="section core-values" data-aos="zoom-in">
+    <h2>Our Core Values</h2>
+    <div class="values-container">
+      <div class="center-circle">CORE VALUES</div>
+      
+      <div class="value-item" style="top: 10%; left: 50%; transform: translateX(-50%);" data-aos="fade-down">
+        <h3>Integrity</h3>
+        <p>We are down-to-earth, honest, and approachable.</p>
+      </div>
+      
+      <div class="value-item" style="top: 30%; left: 15%;" data-aos="fade-right">
+        <h3>Respect</h3>
+        <p>We treat others as they want to be treated.</p>
+      </div>
+      
+      <div class="value-item" style="top: 30%; right: 15%;" data-aos="fade-left">
+        <h3>Teamwork</h3>
+        <p>We recognize trusting relationships are key to achieving success.</p>
+      </div>
+      
+      <div class="value-item" style="bottom: 30%; left: 15%;" data-aos="fade-right">
+        <h3>Excellence</h3>
+        <p>We are committed to highest quality and safety standards.</p>
+      </div>
+      
+      <div class="value-item" style="bottom: 30%; right: 15%;" data-aos="fade-left">
+        <h3>Innovation</h3>
+        <p>Encouraging creativity and embracing modern technologies.</p>
+      </div>
+      
+      <div class="value-item" style="bottom: 10%; left: 50%; transform: translateX(-50%);" data-aos="fade-up">
+        <h3>Accountability</h3>
+        <p>We honor our commitments and focus on "how it can be done."</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Case Study 5 – Drowsiness & Car Damage Detection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f4f8f5;
+      color: #2e2e2e;
+    }
+
+    header {
+      background: linear-gradient(135deg, #3e7d55, #7cbf78);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .image-block {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .image-block img {
+      max-width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .image-block img:hover {
+      transform: scale(1.02);
+    }
+
+    .image-block p {
+      font-size: 14px;
+      color: #555;
+      margin-top: 8px;
+    }
+
+    .section {
+      background-color: #ffffff;
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease;
+    }
+
+    .section:hover {
+      transform: scale(1.01);
+    }
+
+    .section h2 {
+      color: #3e7d55;
+      margin-bottom: 15px;
+      font-size: 22px;
+      border-left: 5px solid #3e7d55;
+      padding-left: 12px;
+    }
+
+    .section ul {
+      padding-left: 24px;
+      line-height: 1.8;
+      font-size: 16px;
+      color: #444;
+    }
+
+    .section p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      background-color: #eaeaea;
+      border-top: 1px solid #ccc;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 26px;
+      }
+
+      .section h2 {
+        font-size: 18px;
+      }
+
+      .section p,
+      .section ul {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Case Study 5: Drowsiness & Car Damage Detection</h1>
+    <p>AI-based Prevention & Post-Accident Analysis System</p>
+  </header>
+
+  <div class="container">
+
+    <div class="image-block">
+      <img src="csi5.jpg" alt="Drowsiness Detection" style="width:500px"/>
+      <p>Figure 1: Driver fatigue monitoring system (sample image)</p>
+    </div>
+
+    <div class="section">
+      <h2>🛏 Drowsiness Detection</h2>
+      <ul>
+        <li>Eye closure rate & blink duration monitoring</li>
+        <li>Head nodding and yawning detection</li>
+        <li>Face landmark analysis for driver fatigue signs</li>
+        <li>Real-time alert system to prevent accidents</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🚗 Car Damage Assessment</h2>
+      <ul>
+        <li>Capture damaged vehicle images post-incident</li>
+        <li>Detect damage area and severity</li>
+        <li>Classify into front/rear/side impact</li>
+        <li>Useful for insurance claim support</li>
+      </ul>
+    </div>
+
+    <!-- 🖼 Car image block -->
+    <div class="image-block">
+      <img src="C:\Users\malee\Downloads\intro-to-html\Selected\csi51.jpg" alt="Car Damage Detection" style="width:500px"/>
+      <p>Figure 2: Post-accident damage detection and classification (sample image)</p>
+    </div>
+
+    <div class="section">
+      <h2>💡 Technology Stack</h2>
+      <ul>
+        <li>Dlib & OpenCV for facial detection</li>
+        <li>YOLOv5 for car damage detection</li>
+        <li>Custom dataset training with TensorFlow</li>
+        <li>Web dashboard for monitoring and reporting</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>✅ Benefits</h2>
+      <ul>
+        <li>Prevents accidents caused by drowsiness</li>
+        <li>Automates car damage reporting</li>
+        <li>Improves fleet safety and insurance processing</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2025 NITTTR Chennai | Department of Educational Media and Technology
+  </footer>
+
+</body>
+</html>

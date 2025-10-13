@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    button{
+      background: linear-gradient(to right,pink,rgb(135, 197, 210));
+      border-radius:50%;
+      border:2px solid black;
+      margin:10px;
+      height:100px;
+      width:100px;
+      
+    }
+  </style>
+</head>
+<body id="a1">
+  <center>
+    <h1>COLOR CHANGE</h1>
+  <div>
+   <button onclick="clr('yellow')">YELLOW</button>
+  <button onclick="clr('lightblue')">BLUE</button>
+  <button onclick="clr('pink')">PINK</button>
+  </div>
+  </center>
+  <script>
+    let a1=document.getElementById("a1");
+    document.addEventListener("click",(e)=>{
+       if(e.target.tagName!=="BUTTON"){
+        document.body.style.backgroundColor="white";
+       }
+    });
+    function clr(c){
+      document.body.style.backgroundColor=c;
+    }
+  </script>
+  
+</body>
+</html>

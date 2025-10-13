@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Content Studio</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+    body{
+     display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      background-color: rgb(119, 123, 123);
+      gap: 50px;
+    }
+    .box{
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin-top: 50px;
+      transform-style: preserve-3d;
+      animation: animate 20s linear infinite;
+    }
+    @keyframes animate{
+      0%{
+        transform:perspective(1000px) rotateY(0deg);
+      }
+      100%{
+        transform:perspective(1000px) rotateY(360deg);
+      }
+    }
+    .box span{
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      transform-origin: center;
+      transform-style:preserve-3d;
+      transform:rotateY(calc(var(--i)*45deg)) translateZ(400px);
+      -webkit-box-reflect:below 0px
+      linear-gradient(transparent,transparent,#0004);
+    }
+    .box span img{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      border:2px solid white;
+      border-radius:18px;
+      height:100%;
+      object-fit:cover;
+    }
+    h1{
+      color: white;
+      font-size: 3.5rem;
+      text-align: center;
+      margin-bottom:40px;
+    }
+    
+    /* Flip card container */
+    .flip-card {
+      background-color: transparent;
+      width: 780px;
+      height: 230px;
+      perspective: 1000px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    
+    /* Flip card inner container */
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      border: 2px solid white;
+      border-radius: 20px;
+    }
+    
+    /* Flip on click */
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    /* Front and back of card */
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    /* Front of card (image) */
+    .flip-card-front {
+      background-color: transparent;
+      color: white;
+      justify-content: center;
+    }
+    
+    /* Back of card (specifications) */
+    .flip-card-back {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      transform: rotateY(180deg);
+      justify-content: space-between;
+      padding: 20px;
+    }
+    
+    .i1{
+       height:150px;
+       width:200px;
+       border:2px solid white;
+       border-radius: 15px;
+       object-fit: cover;
+    }
+    
+    .specs {
+      font-size: 25px;
+      text-align: left;
+      padding: 0 20px;
+    }
+    
+    h3{
+      color:white;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    
+    span{
+      color:white;
+      font-weight: bold;
+    }
+      @media (max-width: 768px) {
+      .box {
+        display: none; /* hide cube on small screens */
+      }
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.spec-table th, .spec-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e3dddd;
+  vertical-align: top;
+}
+
+.spec-table th {
+  color: #00d4ff;
+  width: 30%;
+  font-weight: bold;
+}
+
+.spec-table td {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .box {
+    display: none; /* hide cube on small screens */
+  }
+  
+  .spec-table {
+    font-size: 14px;
+  }
+  
+  .spec-table th, .spec-table td {
+    padding: 8px;
+  }
+}
+  </style>
+</head>
+<body>
+  <h1>E-Content Studio</h1>
+  <div class="box">
+    <span style="--i: 1"><img src="286A9949.webp" ></span>
+    <span style="--i: 2"><img src="286A9934.webp"></span>
+    <span style="--i: 3"><img src="286A9946.webp"></span>
+    <span style="--i: 4"><img src="286A9975.webp"></span>
+    <span style="--i: 5"><img src="286A9916.webp" ></span>
+    <span style="--i: 6"><img src="286A9984.webp"></span>
+     <span style="--i: 7"><img src="286A9926.webp"></span>
+    <span style="--i: 8"><img src="286A9928.webp"></span>
+    <span style="--i: 9"><img src="286A0008.webp"></span>
+    <span style="--i: 10"><img src="286A0022.webp"  ></span> 
+    <span style="--i: 11"><img src="286A9971.webp" ></span>
+    <span style="--i: 12"><img src="286A9928.webp" ></span>
+    <span style="--i: 13"><img src="IMG_0627.webp"></span>
+    <span style="--i: 14"><img src="IMG_0636.webp"></span> 
+    <span style="--i: 15"><img src="01.webp"></span>
+    <span style="--i: 16"><img src="03.webp"></span>
+  </div>
+  
+  <!-- Flip Card 1 -->
+  <div class="flip-card" onclick="this.classList.toggle('flipped')">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="CANON 600EX II-RT.webp" class="i1">
+        <h3>CANON 600EX II-RT</h3>
+      </div>
+      <div class="flip-card-back">
+        <table class="spec-table">
+          <tr>
+            <th>Specifications:</th>
+            <td>12th Gen Intel Core i9, 64GB DDR4, Windows 11 Pro, NVIDIA RTX, 1TB NVMe SSD + 4TB HDD, Thunderbolt 4, Liquid cooling</td>
+          </tr>
+          <tr><th>Quantity:</th><td>3 units</td></tr>
+          <tr><th>Year of Purchase:</th><td>2023</td></tr>
+          <tr><th>Cost:</th><td>₹2,00,000 per unit</td></tr>
+           <tr><th>Purpose:</th><td></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Flip Card 2 -->
+  <div class="flip-card" onclick="this.classList.toggle('flipped')">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="CANON EOS 5D MIV.webp" class="i1">
+        <h3>CANON EOS 5D MIV</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="CANON EOS 5D MIV.webp" class="i1">
+        <div class="specs">
+          <span>SPECIFICATIONS</span><br>
+          ➡️Sensor : 30.4MP Full-Frame CMOS
+          <br>➡️Autofocus : 61-Point AF (41 cross-type) 
+          <br>➡️Video : 4K UHD @ 30fps, Full HD @ 60fps 
+          <br>➡️Continuous Shooting : 7 fps,
+          <br>➡️Connectivity : Wi-Fi, NFC, GPS
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Flip Card 3 -->
+  <div class="flip-card" onclick="this.classList.toggle('flipped')">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="HARISON LIGHT.webp" class="i1">
+        <h3>HARISON LIGHT</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="HARISON LIGHT.webp" class="i1">
+        <div class="specs">
+          <span>SPECIFICATIONS</span><br>
+          ➡️Light Type : LED(Bi-Color or RGB)
+          <br>➡️Color Temperature:3200K - 5600K
+          <br>➡️Brightness : Up to 100W equivalent 
+          <br>➡️CRI (Color Accuracy) : ≥95 
+          <br>➡️Power Options : AC adapter or battery-powered 
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Flip Card 4 -->
+  <div class="flip-card" onclick="this.classList.toggle('flipped')">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="PCR CONTROLLER.webp" class="i1" loading="lazy">
+        <h3>PCR CONTROLLER</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="PCR CONTROLLER.webp" class="i1"loading="lazy">
+        <div class="specs">
+          <span>SPECIFICATIONS</span><br>
+          ➡️Temperature Range : 4°C – 100°C
+          <br>➡️Heating/Cooling Rate : 2°C – 5°C per second 
+          <br>➡️Block Type: modular  
+          <br>➡️Control Interface : PC software connectivity
+          <br>➡️Programmable Cycles : Up to 99 cycles 
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Flip Card 5 -->
+  <div class="flip-card" onclick="this.classList.toggle('flipped')">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="LIGHT CONSOLE.webp" class="i1" loading="lazy">
+        <h3>LIGHT CONSOLE</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="LIGHT CONSOLE.webp" class="i1" loading="lazy">
+        <div class="specs">
+          <span>SPECIFICATIONS</span><br>
+          ➡️Control Channels : 512+ DMX channels
+          <br>➡️Fixture Control:Supports moving heads
+          <br>➡️Programming : Cue stacks, effects engines
+          <br>➡️User Interface: Touchscreen + physical faders
+          <br>➡️Connectivity : DMX512, Art-Net/sACN, MIDI
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Flip Card 6 -->
+  <div class="flip-card" onclick="this.classList.toggle('flipped')">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="RODE MICROPHONE.webp" class="i1" loading="lazy">
+        <h3>RODE MICROPHONE</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="RODE MICROPHONE.webp" class="i1" loading="lazy">
+        <div class="specs">
+          <span>SPECIFICATIONS</span><br>
+          ➡️Microphone Type : Condenser (USB/XLR)
+          <br>➡️Polar Pattern : Cardioid (common)
+          <br>➡️Frequency Response : 20Hz – 20kHz 
+          <br>➡️Max SPL : 130–140dB
+          <br>➡️Connectivity : USB-C/XLR 
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Flip Card 7 -->
+  <div class="flip-card" onclick="this.classList.toggle('flipped')">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="SONY PXW-X200.webp" class="i1" loading="lazy">
+        <h3>SONY PXW-X200</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="SONY PXW-X200.webp" class="i1" loading="lazy">
+        <div class="specs">
+          <span>SPECIFICATIONS</span><br>
+          ➡️Sensor:1/2-type Exmor CMOS (3x chips)
+          <br>➡️Lens : 20x optical zoom 
+          <br>➡️Recording : XAVC 4:2:2 10-bit 
+          <br>➡️ISO Range : Native 200-4000
+          <br>➡️Connectivity : HD/SD-SDI, HDMI, Wi-Fi/NFC
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Flip Card 8 -->
+  <div class="flip-card" onclick="this.classList.toggle('flipped')">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="TELEPROMPTER.webp" class="i1" loading="lazy">
+        <h3>TELEPROMPTER</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="TELEPROMPTER.webp" class="i1" loading="lazy">
+        <div class="specs">
+          <span>SPECIFICATIONS</span><br>
+          ➡️Screen Size : 10-17 inches
+          <br>➡️Reflective Glass : Beam-splitter glass 
+          <br>➡️Compatibility : Works with DSLRs
+          <br>➡️Adjustability:Tilt and height adjustments 
+          <br>➡️Accessories : Includes tablet mount
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>XR Lab Slider</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    header h2 {
+      font-size: 1.8rem;
+      font-weight: normal;
+      color: #cce3ff;
+    }
+
+    .slider-container {
+      perspective: 1000px;
+      overflow-x: hidden;
+      padding: 50px 0;
+    }
+
+    .slider {
+      display: flex;
+      width: max-content;
+      animation: slide 30s linear infinite;
+      transform-style: preserve-3d;
+    }
+
+    .column {
+      padding: 0 20px;
+      transform: rotateY(15deg);
+      transform-origin: center;
+      transition: transform 0.4s ease;
+    }
+
+    .slider img {
+      width: 250px;
+      height: 180px;
+      border-radius: 15px;
+      object-fit: cover;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .slider img:hover {
+      transform: scale(1.25);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+      z-index: 10;
+    }
+
+    .slider .column:hover {
+      transform: rotateY(0deg) scale(1.1);
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    .i1{
+      height:400px;
+      width:400px;
+      border:2px solid whitesmoke;
+      border-radius: 20px;
+      margin:20px;
+    }
+    h1{
+      text-align: center;
+    }
+  .equipment-section {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px auto;
+  flex-wrap: wrap;
+}
+
+.flip-card {
+  background: transparent;
+  width: 400px;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  border: 2px solid whitesmoke;
+  overflow: hidden;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  background-color: #1f1f1f;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .spec-table th, .spec-table td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #444;
+    }
+
+    .spec-table th {
+      color: #00d4ff;
+      width: 40%;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Department of Educational Media And Technology</h1>
+    <h2>XR Lab</h2>
+  </header>
+
+  <div class="slider-container">
+    <div class="slider">
+      <!-- Original + Duplicated Images for loop -->
+      <!-- You can add or remove more columns as needed -->
+      <div class="column"><img src="2.jpg" alt=""></div>
+      <div class="column"><img src="3.jpg" alt=""></div>
+      <div class="column"><img src="4.jpg" alt=""></div>
+      <div class="column"><img src="5.jpg" alt=""></div>
+      <div class="column"><img src="6.jpg" alt=""></div>
+      <div class="column"><img src="286A0048.jpg" alt=""></div>
+      <div class="column"><img src="286A0116.jpg" alt=""></div>
+      <div class="column"><img src="286A0118.jpg" alt=""></div>
+      <div class="column"><img src="286A1289.jpg" alt=""></div>
+      <div class="column"><img src="286A1297.jpg" alt=""></div>
+      <div class="column"><img src="286A1301.jpg" alt=""></div>
+      <div class="column"><img src="286A1364.jpg" alt=""></div>
+      <div class="column"><img src="286A9121.jpg" alt=""></div>
+      <div class="column"><img src="286A9142.jpg" alt=""></div>
+      <div class="column"><img src="286A9135.jpg" alt=""></div>
+      <div class="column"><img src="286A9156.jpg" alt=""></div>
+      <div class="column"><img src="286A9171.jpg" alt=""></div>
+      <div class="column"><img src="286A9989.jpg" alt=""></div>
+
+      <!-- Duplicate for seamless animation -->
+      <div class="column"><img src="2.jpg" alt=""></div>
+      <div class="column"><img src="3.jpg" alt=""></div>
+      <div class="column"><img src="4.jpg" alt=""></div>
+      <div class="column"><img src="5.jpg" alt=""></div>
+      <div class="column"><img src="6.jpg" alt=""></div>
+      <div class="column"><img src="286A0048.jpg" alt=""></div>
+      <div class="column"><img src="286A0116.jpg" alt=""></div>
+      <div class="column"><img src="286A0118.jpg" alt=""></div>
+      <div class="column"><img src="286A1289.jpg" alt=""></div>
+      <div class="column"><img src="286A1297.jpg" alt=""></div>
+      <div class="column"><img src="286A1301.jpg" alt=""></div>
+      <div class="column"><img src="286A1364.jpg" alt=""></div>
+      <div class="column"><img src="286A9121.jpg" alt=""></div>
+      <div class="column"><img src="286A9142.jpg" alt=""></div>
+      <div class="column"><img src="286A9135.jpg" alt=""></div>
+      <div class="column"><img src="286A9156.jpg" alt=""></div>
+      <div class="column"><img src="286A9171.jpg" alt=""></div>
+      <div class="column"><img src="286A9989.jpg" alt=""></div>
+    </div>
+  </div>
+ <h1 style="text-align:center; margin-top: 40px;">XR LAB EQUIPMENT</h1>
+<div class="equipment-section">
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="02.jpg" alt="Equipment 1">
+      </div>
+      <div class="flip-card-back">
+        <h3>Vave truboard</h3>
+        <table class="spec-table">
+          <tr>
+            <th>Specifications:</th>
+            <td>85" 4K Interactive Touch Display, ADPM A13 Chipset, 8GB RAM, 128GB SSD, 3x USB, 1x HDMI, ZebOS (Linux-based), Manufacturer: Purple Wave Infocom</td>
+          </tr>
+          <tr><th>Quantity:</th><td>1 unit</td></tr>
+          <tr><th>Year of Purchase:</th><td>2023</td></tr>
+          <tr><th>Cost:</th><td>₹3,00,000 (approx.)</td></tr>
+           <tr><th>Purpose:</th><td></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="286A4320.jpg" alt="Equipment 2">
+      </div>
+      <div class="flip-card-back">
+        <h3>Camera minnray ptzcam</h3>
+        <table class="spec-table">
+          <tr>
+            <th>Specifications:</th>
+            <td>1/2.8" 4K SONY CMOS (8.5MP), 3840×2160 @30fps, 12X Optical Zoom, HDMI/SDI/USB3.0/LAN/PoE, H.265/H.264/MJPEG, AAC/MP3/G.711A, Gravity sensor, 3D noise reduction</td>
+          </tr>
+          <tr><th>Quantity:</th><td>2 units</td></tr>
+          <tr><th>Year of Purchase:</th><td>2022</td></tr>
+          <tr><th>Cost:</th><td>₹1,50,000 per unit</td></tr>
+           <tr><th>Purpose:</th><td></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="01 (1).jpg" alt="Equipment 3">
+      </div>
+      <div class="flip-card-back">
+        <h3>Holoware (PC)</h3>
+        <table class="spec-table">
+          <tr>
+            <th>Specifications:</th>
+            <td>12th Gen Intel Core i9, 64GB DDR4, Windows 11 Pro, NVIDIA RTX, 1TB NVMe SSD + 4TB HDD, Thunderbolt 4, Liquid cooling</td>
+          </tr>
+          <tr><th>Quantity:</th><td>3 units</td></tr>
+          <tr><th>Year of Purchase:</th><td>2023</td></tr>
+          <tr><th>Cost:</th><td>₹2,00,000 per unit</td></tr>
+           <tr><th>Purpose:</th><td></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

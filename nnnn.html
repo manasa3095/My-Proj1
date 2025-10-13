@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NITTTR Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .service-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: visible;
+        }
+        
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .video-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f8ff;
+            border-radius: 50%;
+            color: #3498db;
+            font-size: 28px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+            text-align: center;
+        }
+        
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 15px;
+            text-align: center;
+        }
+        
+        .know-more-container {
+            position: relative;
+            margin-top: 20px;
+            z-index: 10; /* Increased from 3 to 10 */
+        }
+        
+        .know-more-btn {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            justify-content: center;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+          #ig1{
+          height:200px;
+          width:1000px;
+          margin-left:220px;
+        }
+        .know-more-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .dropdown-content {
+            position: relative;
+            width: 100%;
+            background: white;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+            overflow-y: auto;
+            z-index: 1; /* Increased from 10 to 20 */
+            left: 0;
+            top:calc(100%+5px);
+            margin-top: 5px;
+        }
+        
+        .service-box:hover .dropdown-content {
+            max-height: 500px;
+            opacity: 1;
+        }
+        
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.2s;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: center;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f5f5f5;
+            padding-left: 25px;
+        }
+        .fullpage-video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Behind everything */
+            object-fit: cover;
+        }
+        .know-more-btn span {
+            transition: transform 0.3s ease;
+            margin-left: 8px;
+        }
+        
+        .service-box:hover .know-more-btn span {
+            transform: rotate(180deg);
+        }
+        
+        @media (max-width: 768px) {
+            .service-box {
+                padding: 25px;
+            }
+            
+            .service-logo {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+        .blur-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('deptbg.jpg'); /* your image path */
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px);
+    z-index: -1;
+    opacity: 0.5; /* Adjust for lighter/darker look */
+}
+.image-text {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  background: rgb(19, 11, 63);
+  background-size: cover;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  margin: 40px 0;
+}
+
+
+    </style>
+</head>
+<body>
+
+   <img src="https://www.nitttrc.ac.in/nitttr/assets/img/new-logo.png" id="ig1">
+  <h1 class="image-text">Department Of Educational Media And Technology</h1>
+
+
+    <div class="container">
+        <div class="services-grid">
+            <!-- 1. About Us -->
+            <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="videoplayback (1).mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">👥</div>
+                    <h3>About Us</h3>
+                    <p>Empowering educators through media,technology, and innovation.We bridge the gap between pedagogy and digital learning.</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="history.html">History</a>
+                            <a href="vis_and_mis.html">Vision  &  Mission</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2. Faculty -->
+            <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="bg2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">🎓</div>
+                    <h3>Faculty</h3>
+                    <p>A dedicated team of experts driving excellence in instructional design and digital education. Passionate about research,training, and content innovation.</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="fac2.html">Faculty Profiles</a>
+                            <a href="ra.html">Research Areas</a>
+                            <a href="publications.html">Publications</a>
+                            <a href="fd.html">Faculty Development</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3. Labs -->
+            <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="videoplayback.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">🔬</div>
+                    <h3>Infrastructure</h3>
+                    <p>Advanced labs equipped for multimedia,e-content,and interactive learning design.Enabling hands-on creation of future-ready educational tools.</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="xrlab.html">XR Lab</a>
+                            <a href="xltclab.html">XLTC Centre</a>
+                            <a href="#">Microteaching lab</a>
+                            <a href="#">AR VR programming and application lab</a>
+                            <a href="#">Content Creation Lab</a>
+                            <a href="#">Institutional design studio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 4. eContent Studio -->
+            <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="bgv.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">🖥</div>
+                    <h3>e-Content Studio</h3>
+                    <p>A state-of-the-art facility for recording,editing, and producing digital learning content.Equipped with green screens,audiobooths, and advanced post-production tools.</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="studio.html" >Infrastructure</a>
+                            <a href="swayam.html">SWAYAM</a>
+                            <a href="prodvideo.html">eContent Development</a>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <!-- 5. M.Tech Programme (AR & VR) -->
+            <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="mtchvid.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">🕶</div>
+                    <h3>M.Tech Programme (AR & VR)</h3>
+                    <p>A specialized program in Educational Technology for aspiring digital educators.Combines pedagogy,media skills,and technology integration.</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                              <a href="ap.html">Admission Process</a>
+                            <a href="brochure.html">Program Structure</a>
+                            <a href="#">Research Projects</a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 6. Workdone & Capabilities -->
+            <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="wcvid.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">🏆</div>
+                    <h3>Workdone & Capabilities</h3>
+                    <p>Proven track record in training,e-content development,and educatinal consultancy. Capable of transforming teaching through innovation and tech-based solutions.</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                               <a href="workdone.html">Workdone</a>
+                            <a href="#">Major Projects</a>
+                            <a href="#">Technical Capabilities</a>
+                            <a href="#">Research Output</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 7.MOU -->
+             <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="mou.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">🤝</div>
+                    <h3>MOU</h3>
+                    <p>Strong academic and industry partnerships through MoUs with premier instituitions.Enabling collabrative projects,training programs, and digital content exchange.</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#">Monolith</a>
+                            <a href="#">DB Productions</a>
+                            <a href="#">Madras Mindworks</a>
+                            <a href="#">MGR Film and Telivision Institute</a>
+                           
+                        </div>
+                    </div>
+                </div>
+             </div>
+              <!-- 8.Industry Interface -->
+             <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="ii.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">🏭</div>
+                    <h3>Industry Interface</h3>
+                    <p>Bridging the gap between academia and industry through collabration and innovation.Engaging with industries for training,content development, and technology transfer.</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                             <a href="#">Monolith</a>
+                            <a href="#">DB Productions</a>
+                            <a href="#">Madras Mindworks</a>
+               
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                 <!-- 9. Consultancy Services -->
+            <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="cons.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">📲</div>
+                    <h3>Consultancy Services</h3>
+                    <p>Supporting institutions and industries with end-to-end media content development through expert consultancy.</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="quote.html">Quote For</a>
+                            <a href="">Client Testimonials</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                 <!-- 10. Contact us -->
+            <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="videoplayback (4).mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">📝</div>
+                    <h3>Feedback & Testimonials</h3>
+                    <p>Reach out to us for collabrations consultancy, or academic inquiries.We're here to support your journey in educational media and technology</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                             <a href="pt.html">Participant Testimonials</a>
+                            <a href="feedback3.html">Feedback submission form</a>
+                            <a href="contact.html">contact us</a>
+                            <a href="help.html">Help</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="videoplayback (3).mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">🗞️</div>
+                    <h3>News & Events</h3>
+                    <p>Stay updated with the latest announcements, innovations, and happenings. Explore upcoming events, recent highlights, and important Dept news all in one place.</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                             <a href="#">News Updates</a>
+                            <a href="#">Event calendar</a>
+                            <a href="#">Event Galleries</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="service-box">
+                <div class="video-container">
+                    <video class="video-bg" loop muted playsinline autoplay>
+                        <source src="gallery.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="content">
+                    <div class="service-logo">📸</div>
+                    <h3>Gallery</h3>
+                    <p>Discover a visual journey through our lab’s achievements, events, and milestones. The gallery showcases memorable moments and creative highlights captured over time.</p>
+                    <div class="know-more-container">
+                        <button class="know-more-btn">
+                            Know more <span>▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                             <a href="go.html">Photos </a>
+                            <a href="#">Videos</a>
+                            <a href="#">Virtual Tours</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        // Auto-play all videos when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.video-bg').forEach(video => {
+                video.play().catch(e => {
+                    console.log("Video autoplay prevented, trying with user interaction");
+                    document.body.addEventListener('click', function once() {
+                        video.play().catch(e => console.log("Video play failed:", e));
+                        document.body.removeEventListener('click', once);
+                    }, { once: true });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

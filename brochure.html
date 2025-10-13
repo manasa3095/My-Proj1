@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.Tech in Augmented & Virtual Reality | NITTTR Chennai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --vr-blue: #00b4d8;
+            --ar-orange: #ff9e00;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+        
+        .vr-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,180,216,0.05) 0%, rgba(255,158,0,0.05) 100%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .institute-name {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+        
+        .ar-vr-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--vr-blue), var(--ar-orange));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 60px 0;
+            flex-wrap: wrap;
+        }
+        
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: all 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        /* Program Highlights */
+        .highlights {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlights::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--vr-blue), var(--ar-orange));
+        }
+        
+        /* Cards Section */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .card ul {
+            padding-left: 20px;
+        }
+        
+        .card li {
+            margin-bottom: 8px;
+        }
+        
+        /* Facilities Section */
+        .facilities {
+            margin: 60px 0;
+        }
+        
+        .facility-item {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .facility-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-right: 20px;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--vr-blue), var(--ar-orange));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid var(--secondary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Download Button */
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--vr-blue), var(--ar-orange));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .download-btn i {
+            margin-right: 8px;
+        }
+        
+        .download-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        /* Animations */
+        .animate-delay-1 {
+            animation-delay: 0.3s;
+        }
+        
+        .animate-delay-2 {
+            animation-delay: 0.6s;
+        }
+        
+        .animate-delay-3 {
+            animation-delay: 0.9s;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="vr-bg"></div>
+    
+    <div class="container">
+        <!-- Header Section -->
+        <header class="animate__animated animate__fadeIn">
+            <div class="header-content">
+                <h1>M.Tech in Augmented & Virtual Reality</h1>
+                <div class="ar-vr-badge animate__animated animate__pulse animate__infinite">
+                    Cutting-Edge Immersive Technology Program
+                </div>
+                <div class="institute-name">
+                    DEPARTMENT OF EDUCATIONAL MEDIA AND TECHNOLOGY
+                </div>
+                <div class="institute-name">
+                    NATIONAL INSTITUTE OF TECHNICAL TEACHERS TRAINING AND RESEARCH
+                </div>
+                <p>Institution Deemed to be University under Distinct Category</p>
+            </div>
+        </header>
+        
+        <!-- Download Brochure Button -->
+        <div class="download-container animate__animated animate__fadeIn">
+            <button id="downloadBrochure" class="download-btn">
+                <i class="fas fa-download"></i> Download Brochure (PDF)
+            </button>
+        </div>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-text animate__animated animate__fadeInLeft">
+                <h2>Transformative Technologies for the Future</h2>
+                <p>Augmented Reality (AR) and Virtual Reality (VR) are interdisciplinary technologies combining computer science, design, and psychology. This program equips students with comprehensive knowledge, fostering collaboration across disciplines to create effective, ethical, and innovative digital experiences.</p>
+                <a href="#apply" class="btn">Apply Now</a>
+            </div>
+            <div class="hero-image animate__animated animate__fadeInRight">
+                <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1478&q=80" alt="AR VR Technology">
+            </div>
+        </section>
+        
+        <!-- Program Highlights -->
+        <section class="highlights animate__animated animate__fadeInUp">
+            <h2>Program Highlights</h2>
+            <div class="cards-container">
+                <div class="card animate__animated animate__fadeInUp animate-delay-1">
+                    <h3><i class="fas fa-graduation-cap"></i> Cutting-Edge Curriculum</h3>
+                    <p>Designed to provide expertise in AR/VR with focus on practical applications in industries like gaming, education, and healthcare.</p>
+                </div>
+                <div class="card animate__animated animate__fadeInUp animate-delay-2">
+                    <h3><i class="fas fa-laptop-code"></i> Hands-on Projects</h3>
+                    <p>Work with state-of-the-art technology and research facilities to build real-world AR/VR applications.</p>
+                </div>
+                <div class="card animate__animated animate__fadeInUp animate-delay-3">
+                    <h3><i class="fas fa-briefcase"></i> Career Opportunities</h3>
+                    <p>Diverse roles across industries including automotive, healthcare, education, gaming, and more.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Eligibility -->
+        <section class="highlights animate__animated animate__fadeInUp">
+            <h2>Eligibility Criteria</h2>
+            <div class="cards-container">
+                <div class="card animate__animated animate__fadeInUp">
+                    <h3><i class="fas fa-check-circle"></i> Eligible Degrees</h3>
+                    <ul>
+                        <li>B.E./B.Tech. in any Engineering discipline</li>
+                        <li>B.Arch/B.Des/M.Des</li>
+                        <li>M.Sc. in Mathematics/Statistics/Computer Science</li>
+                        <li>M.Sc. in Computer Applications/Data Science</li>
+                        <li>M.Sc. in TI/AI and ML/Electronics</li>
+                        <li>M.Sc. in Electronic Media/Software Engineering</li>
+                        <li>M.Sc. in Biotechnology/Physics/Visual Communication</li>
+                        <li>MCA or related fields</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Career Opportunities -->
+        <section class="highlights animate__animated animate__fadeInUp">
+            <h2>Career Opportunities</h2>
+            <div class="cards-container">
+                <div class="card animate__animated animate__fadeInUp animate-delay-1">
+                    <h3><i class="fas fa-industry"></i> Industry Roles</h3>
+                    <ul>
+                        <li>Industrial AR/VR Engineer (Automotive & Manufacturing)</li>
+                        <li>AR/VR Content Creator (EdTech & Training)</li>
+                        <li>Surgical Simulation Specialist (Healthcare)</li>
+                        <li>Metaverse Developer (IT & Software)</li>
+                        <li>3D Artist & Animator (Gaming & Entertainment)</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </section>
+        
+        <!-- Curriculum -->
+        <section class="highlights animate__animated animate__fadeInUp">
+            <h2>Curriculum Structure</h2>
+            <div class="timeline">
+                <div class="timeline-item left animate__animated animate__fadeInLeft">
+                    <div class="timeline-content">
+                        <h3>Core Courses</h3>
+                        <ul>
+                            <li>Augmented Reality and Virtual Reality</li>
+                            <li>Computer Animation</li>
+                            <li>Interaction and Experience Design for AR/VR</li>
+                            <li>Human Computer Interaction in AR/VR</li>
+                            <li>Programming for AR and VR</li>
+                            <li>Content Creation for VR/AR</li>
+                            <li>VR/AR application development</li>
+                            <li>VR/AR applications in industries</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right animate__animated animate__fadeInRight">
+                    <div class="timeline-content">
+                        <h3>Elective Courses</h3>
+                        <ul>
+                            <li>Sensation and Perception</li>
+                            <li>Image Synthesis</li>
+                            <li>Psychophysics</li>
+                            <li>Introduction to Haptics</li>
+                            <li>Immersive Sound & Audio Design</li>
+                            <li>Mobile AR & VR</li>
+                            <li>Spatial computing</li>
+                            <li>Operating systems</li>
+                            <li>Web Technologies</li>
+                            <li>3D Game modeling and Rendering</li>
+                            <li>3D shape Analysis</li>
+                            <li>Neural Image Synthesis for AR or VR</li>
+                            <li>Machine Learning</li>
+                            <li>Cloud computing Technologies</li>
+                            <li>Image Processing</li>
+                            <li>Deep Learning</li>
+                            <li>Computer Vision</li>
+                            <li>Computer graphics and 3D modeling</li>
+                            <li>Python programming</li>
+                            <li>C#</li>
+                            <li>Entrepreneurship AR/VR</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item left animate__animated animate__fadeInLeft">
+                    <div class="timeline-content">
+                        <h3>Industry-Oriented Courses</h3>
+                        <ul>
+                            <li>Immersive User Experience (UX) Design</li>
+                            <li>Interactive Narrative and Digital Storytelling</li>
+                            <li>Enterprise Applications of AR/VR</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Facilities -->
+        <section class="facilities animate__animated animate__fadeInUp">
+            <h2>State-of-the-Art Facilities</h2>
+            
+            <div class="facility-item animate__animated animate__fadeInLeft">
+                <div class="facility-icon">
+                    <i class="fas fa-vr-cardboard"></i>
+                </div>
+                <div>
+                    <h3>XR Lab</h3>
+                    <p>Equipped with HTC Vive, Oculus Quest, AR glasses and Microsoft HoloLens for immersive development and research.</p>
+                </div>
+            </div>
+            
+            <div class="facility-item animate__animated animate__fadeInRight">
+                <div class="facility-icon">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <div>
+                    <h3>High-End Workstations</h3>
+                    <p>Powerful graphic workstations with GPUs, Insta360 Pro2, and Apple iPad Pro for AR/VR content creation.</p>
+                </div>
+            </div>
+            
+            <div class="facility-item animate__animated animate__fadeInLeft">
+                <div class="facility-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div>
+                    <h3>Software Tools</h3>
+                    <p>Industry-standard tools including Unity and Unreal Engine for AR/VR development.</p>
+                </div>
+            </div>
+            
+            <div class="facility-item animate__animated animate__fadeInRight">
+                <div class="facility-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <div>
+                    <h3>Experiential Learning Technology Center (XLTC)</h3>
+                    <p>Dedicated center for cutting-edge research and development in immersive technologies.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        // Simple animation trigger on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate__animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        const animation = entry.target.getAttribute('data-animate');
+                        entry.target.classList.add(animation);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(element => {
+                element.style.opacity = 0;
+                observer.observe(element);
+            });
+
+            // Download Brochure functionality
+            document.getElementById('downloadBrochure').addEventListener('click', function() {
+                // Create a temporary link element
+                const link = document.createElement('a');
+                link.href = 'M.Tech_AR_VR_Brochure.pdf'; // Replace with your actual PDF file path
+                link.download = 'M.Tech_AR_VR_Brochure.pdf'; // Name of the downloaded file
+                
+                // Append to the document, trigger click, then remove
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Alternatively, you could open the PDF in a new tab:
+                // window.open('M.Tech_AR_VR_Brochure.pdf', '_blank');
+            });
+        });
+    </script>
+</body>
+</html>

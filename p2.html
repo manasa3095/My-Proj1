@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    .images{
+      margin:100px auto 50px;
+      width:80%;
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      grid-gap:10px;
+
+    }
+    .images img{
+      width:100%;
+    }
+      .images img:hover{
+      transform:scale(0.8) rotate(-15deg);
+      border-radius: 20px;
+      box-shadow: 2px 2px 50px grey;
+    }
+     .full_img_box{
+      height:100%;
+      width:100%;
+      background-color: rgba(0,0,0,0.9);
+      position:fixed;
+      top:0;
+      left:0;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+     }
+
+  </style>
+</head>
+<body>
+  <div class="full_img_box">
+    <div class="full_img">
+      
+    </div>
+    <span>X</span>
+  </div>
+  <div class="images">
+      <img src="286A0008.JPG" class="ig">  
+      <img src="286A0009.JPG" class="ig">  
+      <img src="286A0022.JPG" class="ig">  
+      <img src="286A0025.JPG" class="ig">
+      <img src="286A9949.JPG" class="ig"> 
+       <img src="286A0048.JPG" class="ig">  
+       <img src="286A0116.JPG" class="ig">  
+       <img src="286A0118.JPG" class="ig">
+
+  </div>
+</body>
+</html>

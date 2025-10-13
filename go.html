@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery – Select Category</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: white;
+      font-size: 3rem;
+      margin-bottom: 50px;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .card-container {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .card {
+      width: 320px;
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    }
+
+    .card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #e0e0e0;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>📸 Explore Our Gallery</h1>
+  <div class="card-container">
+    
+      <a href="pti2.html">
+  <div class="card">
+    <img src="https://img.icons8.com/fluency/96/film-reel.png" alt="Production Icon">
+    <h3>🎬 Production</h3>
+    <p>See photos of our studio setups, editing suites, and behind-the-scenes production shots.</p>
+  </div>
+</a>
+
+  
+
+    <!-- 🌐 ITEC Card -->
+    <a href="foreign.html">
+      <div class="card">
+        <img src="itec.jpg" alt="Global Delegates Icon" width="100" height="100">
+        <h3>🌐 ITEC Participation</h3>
+        <p>Experience our global impact with photos from international workshops, training & events.</p>
+      </div>
+    </a>
+
+  </div>
+</body>
+</html>

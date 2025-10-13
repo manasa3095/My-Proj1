@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Directory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --primary-light: #283593;
+            --secondary: #ffab00;
+            --text-dark: #333;
+            --text-light: #777;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .faculty-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .department-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            grid-column: 1 / -1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .department-card::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .department-card::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+        
+        .department-card h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .department-card p {
+            margin: 15px 0 0;
+            font-size: 1.3rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-heading {
+            grid-column: 1 / -1;
+            margin: 20px 0 10px;
+            font-size: 1.8rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+        
+        .faculty-card {
+            perspective: 1000px;
+            height: 420px;
+            cursor: pointer;
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        
+        .faculty-card:hover .card-front {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .faculty-card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        
+        .card-front {
+            background: linear-gradient(135deg, #f5f7fa, #e4e8f0);
+            color: var(--text-dark);
+            text-align: center;
+            transform: translateY(0);
+        }
+        
+        .faculty-initial {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .faculty-name-front {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .faculty-title-front {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .view-profile {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 20px;
+            background-color: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+        
+        .view-profile i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .faculty-card:hover .view-profile i {
+            transform: translateX(3px);
+        }
+        
+        .view-profile:hover {
+            background-color: var(--primary-light);
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3);
+        }
+        
+        .card-back {
+            background: var(--white);
+            transform: rotateY(180deg);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .faculty-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            margin-bottom: 20px;
+            animation: fadeIn 0.6s cubic-bezier(0.4, 0.2, 0.2, 1) both;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8) rotate(-10deg); }
+            to { opacity: 1; transform: scale(1) rotate(0); }
+        }
+        
+        .faculty-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .faculty-designation {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .faculty-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        
+        .faculty-contact i {
+            width: 24px;
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+        
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 25px;
+            padding: 10px 25px;
+            background-color: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .portfolio-link i {
+            margin-left: 8px;
+        }
+        
+        .portfolio-link:hover {
+            background-color: var(--primary-light);
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .faculty-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .department-card h1 {
+                font-size: 2.2rem;
+            }
+            
+            .department-card p {
+                font-size: 1.1rem;
+            }
+            
+            .section-heading {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="faculty-container">
+        <!-- Department Card -->
+        <div class="department-card">
+            <h1>Department Of Educational Media And Technology</h1>
+            <p>NITTTR Chennai</p>
+        </div>
+        
+        <h2 class="section-heading">Faculty</h2>
+        <!-- Dr. B. Yogameena -->
+        <div class="faculty-card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="faculty-initial">BY</div>
+                    <div class="faculty-name-front">Dr. B. Yogameena</div>
+                    <div class="faculty-title-front">Head & Professor</div>
+                    <div class="view-profile">
+                        View Profile <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Dr. B. Yogameena.jpg" alt="Dr. B. Yogameena" class="faculty-image">
+                    <div class="faculty-name">Dr. B. Yogameena</div>
+                    <div class="faculty-designation">Head & Professor</div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-envelope"></i>yogameena@nitttrc.edu.in
+                    </div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-phone-alt"></i> 044-2254 5507
+                    </div>
+                    <a href="https://vidwan.inflibnet.ac.in/profile/120563" class="portfolio-link">
+                        View Portfolio <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dr. T Subha -->
+        <div class="faculty-card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="faculty-initial">TS</div>
+                    <div class="faculty-name-front">Dr. T Subha</div>
+                    <div class="faculty-title-front">Associate Professor</div>
+                    <div class="view-profile">
+                        View Profile <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Dr. T Subha.jpg" alt="Dr. T Subha" class="faculty-image">
+                    <div class="faculty-name">Dr. T Subha</div>
+                    <div class="faculty-designation">Associate Professor</div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-envelope"></i>subha@nitttrc.edu.in
+                    </div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-phone-alt"></i> 044 - 2254 5409
+                    </div>
+                    <a href="#" class="portfolio-link">
+                        View Portfolio <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Shri A.P. Felix Arokiyaraj -->
+        <div class="faculty-card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="faculty-initial">AP</div>
+                    <div class="faculty-name-front">Shri A.P. Felix Arokiyaraj</div>
+                    <div class="faculty-title-front">Assistant Professor</div>
+                    <div class="view-profile">
+                        View Profile <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Shri A.P. Felix Arokiyaraj.jpg" alt="Shri A.P. Felix Arokiyaraj" class="faculty-image">
+                    <div class="faculty-name">Shri A.P. Felix Arokiyaraj</div>
+                    <div class="faculty-designation">Assistant Professor</div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-envelope"></i> felix@nitttrc.ac.in
+                    </div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-phone-alt"></i> 044-2254 5477
+                    </div>
+                    <a href="#" class="portfolio-link">
+                        View Portfolio <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="faculty-card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="faculty-initial">SR</div>
+                    <div class="faculty-name-front">Dr. S. Rajasekar</div>
+                    <div class="faculty-title-front">Technical Officer</div>
+                    <div class="view-profile">
+                        View Profile <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Dr. S. Rajasekar.webp" alt="Faculty Member" class="faculty-image">
+                    <div class="faculty-name">Dr. S. Rajasekar</div>
+                    <div class="faculty-designation">Technical Officer</div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-envelope"></i> rajasekar@nitttrc.edu.in
+                    </div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-phone-alt"></i> +91 9884462971
+                    </div>
+                    <a href="#" class="portfolio-link">
+                        View Portfolio <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-heading">Production crew</h2>
+        <!-- Shri L.P. Elbin -->
+        <div class="faculty-card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="faculty-initial">LE</div>
+                    <div class="faculty-name-front">Shri L.P. Elbin</div>
+                    <div class="faculty-title-front">Editor(ETV)</div>
+                    <div class="view-profile">
+                        View Profile <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Shri L.P. Elbin.jpg" alt="Shri L.P. Elbin" class="faculty-image">
+                    <div class="faculty-name">Shri L.P. Elbin</div>
+                    <div class="faculty-designation">Editor(ETV)</div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-envelope"></i> elbin.lp@gmail.com
+                    </div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-phone-alt"></i> +91 9444627723
+                    </div>
+                    <a href="#" class="portfolio-link">
+                        View Portfolio <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Shri. S. Navaneethakrishnan -->
+        <div class="faculty-card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="faculty-initial">SN</div>
+                    <div class="faculty-name-front">Shri. S. Navaneethakrishnan</div>
+                    <div class="faculty-title-front">Technical Assistant Gr.I(Cameraman)</div>
+                    <div class="view-profile">
+                        View Profile <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Shri. S. Navaneethakrishnan.jpg" alt="Shri. S. Navaneethakrishnan" class="faculty-image">
+                    <div class="faculty-name">Shri. S. Navaneethakrishnan</div>
+                    <div class="faculty-designation">Technical Assistant Gr.I(Cameraman)</div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-envelope"></i> navaneethcamera@gmail.com
+                    </div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-phone-alt"></i> +91 9566613832
+                    </div>
+                    <a href="#" class="portfolio-link">
+                        View Portfolio <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Smt. G. Prathibha -->
+        <div class="faculty-card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="faculty-initial">GP</div>
+                    <div class="faculty-name-front">Smt. G. Prathibha</div>
+                    <div class="faculty-title-front">ASO</div>
+                    <div class="view-profile">
+                        View Profile <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Smt. G. Prathibha.jpg" alt="Smt. G. Prathibha" class="faculty-image">
+                    <div class="faculty-name">Smt. G. Prathibha</div>
+                    <div class="faculty-designation">ASO</div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-envelope"></i> prathibha@nitttrc.edu.in
+                    </div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-phone-alt"></i> +91 9677181127
+                    </div>
+                    <a href="#" class="portfolio-link">
+                        View Portfolio <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 7th Faculty Placeholder -->
+        <div class="faculty-card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="faculty-initial">RR</div>
+                    <div class="faculty-name-front">Shri Rajadh Rajeev</div>
+                    <div class="faculty-title-front">Senior Technician</div>
+                    <div class="view-profile">
+                        View Profile <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <img src="Shri. Rajadh Rajeev.jpg" alt="Faculty Member" class="faculty-image">
+                    <div class="faculty-name">Shri Rajadh Rajeev</div>
+                    <div class="faculty-designation">Senior Technician</div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-envelope"></i> rajadhraj555@gmail.com
+                    </div>
+                    <div class="faculty-contact">
+                        <i class="fas fa-phone-alt"></i> +91 9746697515
+                    </div>
+                    <a href="#" class="portfolio-link">
+                        View Portfolio <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Add smooth hover effects
+        document.querySelectorAll('.faculty-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                if(!this.classList.contains('flipped')) {
+                    this.querySelector('.card-front').style.transform = 'translateY(-5px)';
+                    this.querySelector('.card-front').style.boxShadow = '0 15px 30px rgba(0,0,0,0.2)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if(!this.classList.contains('flipped')) {
+                    this.querySelector('.card-front').style.transform = '';
+                    this.querySelector('.card-front').style.boxShadow = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
