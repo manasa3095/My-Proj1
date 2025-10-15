@@ -114,12 +114,14 @@
             z-index: 2;
         }
         
-              #ig1 {
-  display: block;
-  height: 200px;
-  max-width: 100%; /* So it shrinks on small screens */
-  margin: 0 auto; /* centers the image */
+    
+        #ig1 {
+  display: block;       /* Makes the image behave like a block element */
+  margin: 0 auto;       /* Auto left and right margins center it horizontally */
+  height: 200px;        /* Keep your desired height */
+  max-width: 100%;      /* Responsive: image won't overflow container */
 }
+
 
         .know-more-btn:hover {
             background-color: #2980b9;
